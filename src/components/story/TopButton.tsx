@@ -6,6 +6,15 @@ interface TopButtonProps {
   text: string;
   onClick: () => void;
 }
+
+/**
+ * 
+ * @example
+ * <TopButton
+    text="이야기 넘어가기"
+    onClick={() => console.log("click skipped")}
+  />
+ */
 const TopButton = ({ text, onClick }: TopButtonProps) => {
   return (
     <>

@@ -1,21 +1,13 @@
+import { Route } from "react-router-dom";
 import "./App.css";
+import Dalnara from "./layouts/Dalnara";
+import Story from "./layouts/Story";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route path="/story" Component={Story} />
+      <Route path="/dalnara" Component={Dalnara} />
     </div>
   );
 }

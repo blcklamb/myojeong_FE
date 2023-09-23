@@ -1,4 +1,4 @@
-import Intro from "@src/components/story/Intro";
+import Intro from "components/story/Intro";
 import React from "react";
 
 const Story = () => {

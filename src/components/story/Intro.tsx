@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 
 const Intro = () => {
   return (
-    <div>
+    <>
       <StyledTop>
         <TopButton
           text="이야기 넘어가기"
@@ -15,13 +15,13 @@ const Intro = () => {
         <img src="https://picsum.photos/120/120" alt="myojeong" />
       </StyledMiddle>
       <StyledBottom>
-        <Paragraph>
+        <Paragraph align="center">
           {`안녕하새오.
           저는 달나라에 사는 
           토끼 요정, 묘정이애오.`}
         </Paragraph>
       </StyledBottom>
-    </div>
+    </>
   );
 };
 

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-import { ReactComponent as SongpyeonIcon } from "../img/pink_songpyeon.svg";
+type songpyeonType = "love" | "money" | "luck";
 
-const SongpyeonBtn = () => {
+const SongpyeonBtn = ({ songpyeonType }: { songpyeonType: songpyeonType }) => {
   return (
     <StyledSongpyeon>
-      <SongpyeonIcon />
+      <StyledSongpyeonImg src={require(`../img/${songpyeonType}.png`)} />
       <StyledCount>999+</StyledCount>
     </StyledSongpyeon>
   );
@@ -25,7 +25,24 @@ const StyledSongpyeon = styled.div`
   }
 `;
 
+const StyledSongpyeonImg = styled.img`
+  height: 33px;
+  width: 36px;
+`;
+
 const StyledCount = styled.h3`
-  margin-left: 5px;
   font-size: 16px;
+  margin-left: 5px;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
 `;

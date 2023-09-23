@@ -2,6 +2,7 @@ import styled from "styled-components";
 import SongpyeonBtn from "./SongpyeonBtn";
 
 import { ReactComponent as ShareIcon } from "../img/Share.svg";
+import { COLORS } from "styles/color";
 
 const Wish = () => {
   return (
@@ -15,9 +16,9 @@ const Wish = () => {
           <StyledWisher>- 테일러</StyledWisher>
         </StyledBody>
         <StyledFooter>
-          <SongpyeonBtn />
-          <SongpyeonBtn />
-          <SongpyeonBtn />
+          <SongpyeonBtn songpyeonType="love" />
+          <SongpyeonBtn songpyeonType="money" />
+          <SongpyeonBtn songpyeonType="luck" />
         </StyledFooter>
       </StyledWish>
     </>
@@ -30,7 +31,7 @@ const StyledWish = styled.div`
   width: 320px;
   border-radius: 25px 25px 0px 0px;
 
-  background-color: white;
+  background-color: ${COLORS.WHITE};
 
   display: flex;
   flex-direction: column;
@@ -46,6 +47,7 @@ const StyledHeader = styled.div`
 
 const StyledBody = styled.div`
   padding: 0px 23px;
+  font-size: 24px;
 `;
 
 const StyledWishContent = styled.div`
@@ -54,13 +56,13 @@ const StyledWishContent = styled.div`
 
 const StyledWisher = styled.h3`
   text-align: right;
-  font-size: 17px;
+  font-size: 20px;
 `;
 
 const StyledFooter = styled.div`
   height: 51px;
   padding: 0px 5px;
-  background-color: #d9d9d9;
+  background-color: ${COLORS.LIGHT_GREY};
 
   display: flex;
   justify-content: space-between;

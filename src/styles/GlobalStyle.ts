@@ -17,6 +17,7 @@ const GlobalStyle = styled.createGlobalStyle`
 
   :root {
     --toastify-color-success: ${COLORS.LIGHT_BROWN};
+    font-size: 10px;
   }
 
   *,
@@ -26,7 +27,7 @@ const GlobalStyle = styled.createGlobalStyle`
   }
 
   html {
-    font-size: 120%;
+    font-size: 62.5%;
     font-family: "jeong", sans-serif;
 
     height: 844px;
@@ -39,6 +40,7 @@ const GlobalStyle = styled.createGlobalStyle`
   body,
   button,
   input {
+    font-family: "jeong", sans-serif;
     font-size: 1em;
     line-height: 1.5;
   }

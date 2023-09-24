@@ -4,9 +4,13 @@ import Input from "./Input";
 import { ChangeEvent, useState } from "react";
 import { styled } from "styled-components";
 
-const NameTo = () => {
+interface NameToProps {
+  onNext: (name: string) => void;
+  toType: string;
+}
+
+const NameTo = ({ onNext, toType }: NameToProps) => {
   const [name, setName] = useState<string>("");
-  const typeTo = "친구";
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -17,12 +21,12 @@ const NameTo = () => {
     <>
       <StyledTop>
         <Paragraph>
-          {`${typeTo}의
+          {`${toType}의
             이름이 뭐애오?`}
         </Paragraph>
       </StyledTop>
       <StyledMiddle>
-        <Paragraph align="right">{`${typeTo} 이름은`}</Paragraph>
+        <Paragraph align="right">{`${toType} 이름은`}</Paragraph>
         <Input
           value={name}
           height={6.4}
@@ -32,7 +36,7 @@ const NameTo = () => {
         <Paragraph align="right">{`(이)야`}</Paragraph>
       </StyledMiddle>
       <StyledBottom>
-        <NextSPButton onClick={() => console.log("clicked")} />
+        <NextSPButton onClick={() => onNext(name)} />
       </StyledBottom>
     </>
   );

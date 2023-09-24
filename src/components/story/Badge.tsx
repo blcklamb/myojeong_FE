@@ -3,15 +3,15 @@ import styled from "styled-components";
 type TBadge = 1 | 2 | 3 | 4;
 interface BadgeProps {
   badgeType: TBadge;
-  name: string;
+  type: string;
   onClick: () => void;
 }
 
-const Badge = ({ badgeType, name, onClick }: BadgeProps) => {
+const Badge = ({ badgeType, type, onClick }: BadgeProps) => {
   return (
     <StyledBadge badgetype={badgeType} onClick={onClick}>
       <StyledDot badgetype={badgeType} />
-      {name}
+      {type}
     </StyledBadge>
   );
 };
@@ -53,11 +53,3 @@ const StyledDot = styled.div.withConfig({
   border-radius: 50%;
   display: inline-block;
 `;
-
-// const StyledDot = styled.span<{ readonly badgetype: TBadge }>`
-//   height: 0.8rem;
-//   width: 0.8rem;
-//   background-color: ${(props) => BadgeColor.span[props.badgetype]};
-//   border-radius: 50%;
-//   display: inline-block;
-// `;

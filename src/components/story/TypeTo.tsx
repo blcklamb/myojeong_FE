@@ -5,12 +5,16 @@ import { ChangeEvent, useState } from "react";
 import { styled } from "styled-components";
 import Badge from "./Badge";
 
-const TypeTo = () => {
-  const [name, setName] = useState<string>("");
+interface TypeToProps {
+  onNext: (type: string) => void;
+}
 
-  const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
+const TypeTo = ({ onNext }: TypeToProps) => {
+  const [type, setType] = useState<string>("");
+
+  const onChangeType = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    setName(value);
+    setType(value);
   };
 
   return (
@@ -22,35 +26,22 @@ const TypeTo = () => {
         </Paragraph>
       </StyledTop>
       <StyledMiddle>
-        <Paragraph align="right">{`내 이름은`}</Paragraph>
         <StyledBadgeGroup>
-          <Badge badgeType={1} name="나" onClick={() => console.log("나")} />
-          <Badge
-            badgeType={2}
-            name="가족"
-            onClick={() => console.log("가족")}
-          />
-          <Badge
-            badgeType={3}
-            name="친구"
-            onClick={() => console.log("친구")}
-          />
-          <Badge
-            badgeType={4}
-            name="직접 입력"
-            onClick={() => console.log("직접 입력")}
-          />
+          <Badge badgeType={1} type="나" onClick={() => setType("나")} />
+          <Badge badgeType={2} type="가족" onClick={() => setType("가족")} />
+          <Badge badgeType={3} type="친구" onClick={() => setType("친구")} />
+          <Badge badgeType={4} type="직접 입력" onClick={() => setType("")} />
         </StyledBadgeGroup>
         <Input
-          value={name}
+          value={type}
           height={6.4}
           placeholder="예시) 테일러"
-          onChangeInput={onChangeName}
+          onChangeInput={onChangeType}
         />
         <Paragraph align="right">{`(을/를) 위한 소원이야.`}</Paragraph>
       </StyledMiddle>
       <StyledBottom>
-        <NextSPButton onClick={() => console.log("clicked")} />
+        <NextSPButton onClick={() => onNext(type)} />
       </StyledBottom>
     </>
   );

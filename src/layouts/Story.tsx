@@ -55,6 +55,7 @@ const Story = () => {
     await POSTwish({ ...storyData, content: content, isOpen: isOpen });
   };
 
+  // TODO: 임시 fetch 함수, react-query로 바꿀 예정
   const POSTwish = async (data: StoryStepData) => {
     const { fromName, content, isOpen, toName } = data;
     try {

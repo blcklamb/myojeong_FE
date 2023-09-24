@@ -50,7 +50,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
 export default Dropdown;
 
 const StyledDropdownContainer = styled.div`
-  width: 82px;
+  width: 130px;
   height: 48px;
   position: relative;
   display: inline-block;
@@ -60,7 +60,7 @@ const StyledDropdownButton = styled.button`
   width: 100%;
   height: 100%;
   border: 0.3rem solid ${COLORS.GREEN};
-  border-radius: 20px;
+  border-radius: 2.5rem;
   font-size: 24px;
   background-color: ${COLORS.WHITE};
   cursor: pointer;

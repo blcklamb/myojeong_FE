@@ -4,6 +4,7 @@ import Input from "./Input";
 import { ChangeEvent, useState } from "react";
 import { styled } from "styled-components";
 import Badge from "./Badge";
+import { isValidName } from "utils/validation";
 
 interface TypeToProps {
   onNext: (type: string) => void;
@@ -15,6 +16,12 @@ const TypeTo = ({ onNext }: TypeToProps) => {
   const onChangeType = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setType(value);
+  };
+
+  const onClickNextSPButton = () => {
+    if (isValidName(type)) onNext(type);
+    // TODO: toast 처리
+    else alert("유형은 0자 이상 6자 이하애오");
   };
 
   return (
@@ -41,7 +48,7 @@ const TypeTo = ({ onNext }: TypeToProps) => {
         <Paragraph align="right">{`(을/를) 위한 소원이야.`}</Paragraph>
       </StyledMiddle>
       <StyledBottom>
-        <NextSPButton onClick={() => onNext(type)} />
+        <NextSPButton onClick={onClickNextSPButton} />
       </StyledBottom>
     </>
   );

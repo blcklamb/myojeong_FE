@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import SongpyeonBtn from "./SongpyeonBtn";
 
-import { ReactComponent as ShareIcon } from "../img/Share.svg";
+// import { ReactComponent as ShareIcon } from "../img/Share.svg";
 import { COLORS } from "styles/color";
+import Icon from "components/Icon";
 
 const Wish = () => {
   return (
     <>
       <StyledWish>
         <StyledHeader>
-          <ShareIcon />
+          <Icon name="share" width={24} height={24} />
         </StyledHeader>
         <StyledBody>
           <StyledWishContent>잠재력이 아니라 잠과 재력을 각각 따로 주세요!</StyledWishContent>

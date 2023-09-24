@@ -18,4 +18,4 @@ const Icon = ({ name, width, height }: IconProps) => {
 
 export default Icon;
 
-export type IconName = "forward" | "share";
+export type IconName = "forward" | "share" | "navigation";

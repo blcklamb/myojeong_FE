@@ -4,6 +4,7 @@ import Dalnara from "./layouts/Dalnara";
 import Story from "./layouts/Story";
 import GlobalStyle from "styles/GlobalStyle";
 import { IconLoader } from "components/IconLoader";
+import Songpyeon from "components/songpyeon/Songpyeon";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <IconLoader />
       <Routes>
         <Route path="/story" Component={Story} />
+        <Route path="/songpyeon" Component={Songpyeon} />
         <Route path="/dalnara" Component={Dalnara} />
       </Routes>
     </div>

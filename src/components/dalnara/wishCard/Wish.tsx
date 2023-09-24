@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import SongpyeonBtn from "./SongpyeonBtn";
-
-// import { ReactComponent as ShareIcon } from "../img/Share.svg";
 import { COLORS } from "styles/color";
 import Icon from "components/Icon";
+
 
 const Wish = () => {
   return (

@@ -4,7 +4,11 @@ import Input from "./Input";
 import { ChangeEvent, useState } from "react";
 import { styled } from "styled-components";
 
-const NameFrom = () => {
+interface NameFromProps {
+  onNext: (name: string) => void;
+}
+
+const NameFrom = ({ onNext }: NameFromProps) => {
   const [name, setName] = useState<string>("");
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +35,7 @@ const NameFrom = () => {
         <Paragraph align="right">{`(이)야`}</Paragraph>
       </StyledMiddle>
       <StyledBottom>
-        <NextSPButton onClick={() => console.log("clicked")} />
+        <NextSPButton onClick={() => onNext(name)} />
       </StyledBottom>
     </>
   );

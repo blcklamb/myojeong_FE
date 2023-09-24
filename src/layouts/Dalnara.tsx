@@ -26,6 +26,18 @@ const Dalnara = () => {
       {wish_list.map((wish) => (
         <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
       ))}
+      {wish_list.map((wish) => (
+        <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
+      ))}
+      {wish_list.map((wish) => (
+        <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
+      ))}
+      {wish_list.map((wish) => (
+        <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
+      ))}
+      {wish_list.map((wish) => (
+        <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
+      ))}
     </StyledDalnara>
   );
 };
@@ -37,12 +49,15 @@ const StyledDalnara = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 `;
 
 const StyledInputWrapper = styled.div`
-  margin: 25px 0px;
-  width: 320px;
+  width: 32rem;
+  margin: 10rem 0 2.5rem 0;
+  position: sticky;
+  top: 0;
+  background-color: rgba(9, 35, 46, 0.5);
   display: flex;
-  gap: 10px;
+  gap: 1rem;
 `;

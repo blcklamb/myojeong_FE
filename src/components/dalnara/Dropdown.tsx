@@ -50,8 +50,8 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
 export default Dropdown;
 
 const StyledDropdownContainer = styled.div`
-  width: 130px;
-  height: 48px;
+  width: 13rem;
+  height: 4.8rem;
   position: relative;
   display: inline-block;
 `;
@@ -68,9 +68,9 @@ const StyledDropdownButton = styled.button`
 
 const StyledDropdownList = styled.ul`
   width: 100%;
-  margin-top: 5px;
+  margin-top: 0.5rem;
   border: 0.3rem solid ${COLORS.GREEN};
-  border-radius: 20px;
+  border-radius: 2rem;
   background-color: ${COLORS.WHITE};
   font-size: 24px;
   position: absolute;
@@ -85,7 +85,7 @@ const StyledDropdownListItem = styled.li`
   }
 
   &:not(:last-child) {
-    border-bottom: 2px solid ${COLORS.GREEN};
+    border-bottom: 0.2rem solid ${COLORS.GREEN};
   }
 `;
 
@@ -93,5 +93,5 @@ const StyledNaviWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 0.5rem;
 `;

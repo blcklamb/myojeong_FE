@@ -3,7 +3,16 @@ import SongpyeonBtn from "./SongpyeonBtn";
 import { COLORS } from "styles/color";
 import Icon from "components/Icon";
 
-const Wish = () => {
+export interface IWishList {
+  id?: number;
+  from_name: string;
+  content: string;
+  sp1: number;
+  sp2: number;
+  sp3: number;
+}
+
+const Wish = ({ from_name, content, sp1, sp2, sp3 }: IWishList) => {
   return (
     <>
       <StyledWish>
@@ -11,13 +20,13 @@ const Wish = () => {
           <Icon name="share" width={24} height={24} />
         </StyledHeader>
         <StyledBody>
-          <StyledWishContent>잠재력이 아니라 잠과 재력을 각각 따로 주세요!</StyledWishContent>
-          <StyledWisher>- 테일러</StyledWisher>
+          <StyledWishContent>{content}</StyledWishContent>
+          <StyledWisher>- {from_name}</StyledWisher>
         </StyledBody>
         <StyledFooter>
-          <SongpyeonBtn songpyeonType="sp10" />
-          <SongpyeonBtn songpyeonType="sp11" />
-          <SongpyeonBtn songpyeonType="sp13" />
+          <SongpyeonBtn songpyeonType="sp10" count={sp1} />
+          <SongpyeonBtn songpyeonType="sp11" count={sp2} />
+          <SongpyeonBtn songpyeonType="sp13" count={sp3} />
         </StyledFooter>
       </StyledWish>
     </>

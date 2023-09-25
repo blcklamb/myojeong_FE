@@ -10,7 +10,12 @@ interface IconProps {
  */
 const Icon = ({ name, width, height }: IconProps) => {
   return (
-    <svg style={{ pointerEvents: "none" }} width={width.toString()} height={height.toString()} stroke="none">
+    <svg
+      style={{ pointerEvents: "none" }}
+      width={width.toString()}
+      height={height.toString()}
+      stroke="none"
+    >
       <use href={`#${name}`} />
     </svg>
   );
@@ -18,4 +23,9 @@ const Icon = ({ name, width, height }: IconProps) => {
 
 export default Icon;
 
-export type IconName = "forward" | "share" | "navigation";
+export type IconName =
+  | "forward"
+  | "share"
+  | "navigation"
+  | "instagram"
+  | "copy";

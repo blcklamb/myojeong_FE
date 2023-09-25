@@ -37,6 +37,7 @@ const ButtonColor = {
 const ButtonSize = {
   width: { primary: "28rem", secondary: "18rem" },
   height: { primary: "6.4rem", secondary: "5.6rem" },
+  fontSize: { primary: "3.6rem", secondary: "2.8rem" },
 };
 
 const StyledButton = styled.button.withConfig({
@@ -45,7 +46,7 @@ const StyledButton = styled.button.withConfig({
   width: ${(props) => ButtonSize.width[props.buttontype]};
   height: ${(props) => ButtonSize.height[props.buttontype]};
 
-  font-size: 3.6rem;
+  font-size: ${(props) => ButtonSize.fontSize[props.buttontype]};
   border-radius: 2rem;
   border: 0.3rem solid ${(props) => ButtonColor.border[props.buttoncolor]};
   background-color: ${(props) => `${COLORS[props.buttoncolor]}`};

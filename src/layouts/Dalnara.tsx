@@ -47,12 +47,12 @@ const StyledDalnara = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 `;
 
 const StyledInputWrapper = styled.div`
-  margin: 25px 0px;
-  width: 320px;
+  margin: 2.5rem 0;
+  width: 32rem;
   display: flex;
-  gap: 10px;
+  gap: 1rem;
 `;

@@ -12,25 +12,25 @@ const SongpyeonBtn = ({ songpyeonType, count }: { songpyeonType: string; count: 
 export default SongpyeonBtn;
 
 const StyledSongpyeon = styled.div`
-  padding: 0px 5px;
+  padding: 0 0.5rem;
 
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.5rem;
 
   &:not(:last-child) {
-    border-right: 1.5px solid black;
+    border-right: 0.15rem solid black;
   }
 `;
 
 const StyledSongpyeonImg = styled.img`
-  height: 33px;
-  width: 36px;
+  height: 3.3rem;
+  width: 3.6rem;
 `;
 
 const StyledCount = styled.h3`
-  font-size: 16px;
-  margin-left: 5px;
+  font-size: 1.6rem;
+  margin-left: 0.5rem;
   font-family:
     system-ui,
     -apple-system,

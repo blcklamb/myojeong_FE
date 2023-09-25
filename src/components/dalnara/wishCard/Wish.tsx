@@ -36,8 +36,8 @@ const Wish = ({ from_name, content, sp1, sp2, sp3 }: IWishList) => {
 export default Wish;
 
 const StyledWish = styled.div`
-  width: 320px;
-  border-radius: 25px 25px 0px 0px;
+  width: 32rem;
+  border-radius: 2.5rem 2.5rem 0 0;
 
   background-color: ${COLORS.WHITE};
 
@@ -46,16 +46,16 @@ const StyledWish = styled.div`
 `;
 
 const StyledHeader = styled.div`
-  margin-top: 20px;
-  padding: 0px 23px;
+  margin-top: 2rem;
+  padding: 0 2.3rem;
 
   display: flex;
   justify-content: flex-end;
 `;
 
 const StyledBody = styled.div`
-  padding: 0px 23px;
-  font-size: 24px;
+  padding: 0 2.3rem;
+  font-size: 2.4rem;
 `;
 
 const StyledWishContent = styled.div`
@@ -64,12 +64,12 @@ const StyledWishContent = styled.div`
 
 const StyledWisher = styled.h3`
   text-align: right;
-  font-size: 20px;
+  font-size: 2rem;
 `;
 
 const StyledFooter = styled.div`
-  height: 51px;
-  padding: 0px 5px;
+  height: 5.1rem;
+  padding: 0 0.5rem;
   background-color: ${COLORS.LIGHT_GREY};
 
   display: flex;

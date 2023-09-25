@@ -5,17 +5,21 @@ import Story from "./layouts/Story";
 import GlobalStyle from "styles/GlobalStyle";
 import { IconLoader } from "components/IconLoader";
 import Songpyeon from "components/songpyeon/Songpyeon";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
+  const queryClient = new QueryClient();
   return (
     <div className="App">
-      <GlobalStyle />
-      <IconLoader />
-      <Routes>
-        <Route path="/story" Component={Story} />
-        <Route path="/songpyeon" Component={Songpyeon} />
-        <Route path="/dalnara" Component={Dalnara} />
-      </Routes>
+      <QueryClientProvider client={queryClient}>
+        <GlobalStyle />
+        <IconLoader />
+        <Routes>
+          <Route path="/story" Component={Story} />
+          <Route path="/songpyeon?/:wishId" Component={Songpyeon} />
+          <Route path="/dalnara" Component={Dalnara} />
+        </Routes>
+      </QueryClientProvider>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import Span from "./Span";
 import Button from "./Button";
 
 interface MakeWishProps {
-  onNext: (content: string, isOpen: boolean) => Promise<void>;
+  onNext: (content: string, isOpen: boolean) => void;
   fromName: string;
   toName: string;
 }

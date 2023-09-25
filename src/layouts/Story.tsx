@@ -6,6 +6,7 @@ import NameTo from "components/story/NameTo";
 import Turn from "components/story/Turn";
 import TypeTo from "components/story/TypeTo";
 import { styled } from "styled-components";
+import { usePOSTWish } from "hooks/api/story";
 
 type TStep =
   | "INTRO"
@@ -33,6 +34,8 @@ const Story = () => {
     isOpen: true,
   });
 
+  const { mutate } = usePOSTWish();
+
   const onNextNameFrom = (name: string) => {
     setStoryData((prev) => {
       return { ...prev, fromName: name };
@@ -51,32 +54,14 @@ const Story = () => {
     });
     setStep("MAKE-WISH");
   };
-  const onNextMakeWish = async (content: string, isOpen: boolean) => {
-    await POSTwish({ ...storyData, content: content, isOpen: isOpen });
-  };
-
-  // TODO: 임시 fetch 함수, react-query로 바꿀 예정
-  const POSTwish = async (data: StoryStepData) => {
-    const { fromName, content, isOpen, toName } = data;
-    try {
-      const response = await fetch("http://43.201.107.23/wish", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from_name: fromName,
-          to_name: toName,
-          content: content,
-          is_open: isOpen,
-        }),
-      });
-      if (response.ok) {
-        console.log(response);
-      }
-    } catch (err) {
-      console.error(err);
-    }
+  const onNextMakeWish = (content: string, isOpen: boolean) => {
+    const { fromName, toName } = storyData;
+    mutate({
+      from_name: fromName,
+      to_name: toName,
+      content: content,
+      is_open: isOpen,
+    });
   };
 
   return (

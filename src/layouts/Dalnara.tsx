@@ -53,6 +53,9 @@ const StyledDalnara = styled.div`
 const StyledInputWrapper = styled.div`
   margin: 2.5rem 0;
   width: 32rem;
+  position: sticky;
+  top: 0;
+  background-color: rgba(9, 35, 46, 0.5);
   display: flex;
   gap: 1rem;
 `;

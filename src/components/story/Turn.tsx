@@ -2,14 +2,16 @@ import { styled } from "styled-components";
 import TopButton from "./TopButton";
 import Paragraph from "./Paragraph";
 
-const Turn = () => {
+interface TurnProps {
+  onNext: () => void;
+  onSkip: () => void;
+}
+
+const Turn = ({ onNext, onSkip }: TurnProps) => {
   return (
-    <>
+    <StyledWrapper onClick={() => onNext()}>
       <StyledTop>
-        <TopButton
-          text="이야기 넘어가기"
-          onClick={() => console.log("click skipped")}
-        />
+        <TopButton text="이야기 넘어가기" onClick={onSkip} />
       </StyledTop>
       <StyledMiddle>
         <img src="https://picsum.photos/120/120" alt="songpyeon" />
@@ -24,11 +26,13 @@ const Turn = () => {
             송편을 나눠 줄 거애오.`}
         </Paragraph>
       </StyledBottom>
-    </>
+    </StyledWrapper>
   );
 };
 
 export default Turn;
+
+const StyledWrapper = styled.div``;
 
 const StyledTop = styled.div`
   display: flex;

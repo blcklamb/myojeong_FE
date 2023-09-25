@@ -3,13 +3,24 @@ import NextSPButton from "./NextSPButton";
 import Input from "./Input";
 import { ChangeEvent, useState } from "react";
 import { styled } from "styled-components";
+import { isValidName } from "utils/validation";
 
-const NameFrom = () => {
+interface NameFromProps {
+  onNext: (name: string) => void;
+}
+
+const NameFrom = ({ onNext }: NameFromProps) => {
   const [name, setName] = useState<string>("");
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setName(value);
+  };
+
+  const onClickNextSPButton = () => {
+    if (isValidName(name)) onNext(name);
+    // TODO: toast 처리
+    else alert("이름은 0자 이상 6자 이하애오");
   };
 
   return (
@@ -31,7 +42,7 @@ const NameFrom = () => {
         <Paragraph align="right">{`(이)야`}</Paragraph>
       </StyledMiddle>
       <StyledBottom>
-        <NextSPButton onClick={() => console.log("clicked")} />
+        <NextSPButton onClick={onClickNextSPButton} />
       </StyledBottom>
     </>
   );

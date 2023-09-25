@@ -61,3 +61,10 @@ const StyledInputWrapper = styled.div`
   display: flex;
   gap: 1rem;
 `;
+
+const StyledInputWrapper = styled.div`
+  margin: 25px 0px;
+  width: 320px;
+  display: flex;
+  gap: 10px;
+`;

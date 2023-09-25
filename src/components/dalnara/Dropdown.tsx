@@ -50,6 +50,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
 export default Dropdown;
 
 const StyledDropdownContainer = styled.div`
+
   width: 13rem;
   height: 4.8rem;
   position: relative;

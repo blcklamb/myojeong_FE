@@ -39,6 +39,7 @@ const GlobalStyle = styled.createGlobalStyle`
 
   body,
   button,
+  textarea,
   input {
     font-family: "jeong", sans-serif;
     font-size: 1em;
@@ -51,6 +52,12 @@ const GlobalStyle = styled.createGlobalStyle`
   }
 
   button {
+    background: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
     cursor: pointer;
   }
 `;

@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
-type songpyeonType = "love" | "money" | "luck";
-
-const SongpyeonBtn = ({ songpyeonType }: { songpyeonType: songpyeonType }) => {
+const SongpyeonBtn = ({ songpyeonType }: { songpyeonType: string }) => {
   return (
     <StyledSongpyeon>
-      <StyledSongpyeonImg src={require(`../img/${songpyeonType}.png`)} />
+      <StyledSongpyeonImg src={require(`../../../assets/${songpyeonType}.png`)} />
       <StyledCount>999+</StyledCount>
     </StyledSongpyeon>
   );

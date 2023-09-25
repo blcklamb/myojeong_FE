@@ -3,7 +3,6 @@ import SongpyeonBtn from "./SongpyeonBtn";
 import { COLORS } from "styles/color";
 import Icon from "components/Icon";
 
-
 const Wish = () => {
   return (
     <>
@@ -16,9 +15,9 @@ const Wish = () => {
           <StyledWisher>- 테일러</StyledWisher>
         </StyledBody>
         <StyledFooter>
-          <SongpyeonBtn songpyeonType="love" />
-          <SongpyeonBtn songpyeonType="money" />
-          <SongpyeonBtn songpyeonType="luck" />
+          <SongpyeonBtn songpyeonType="sp10" />
+          <SongpyeonBtn songpyeonType="sp11" />
+          <SongpyeonBtn songpyeonType="sp13" />
         </StyledFooter>
       </StyledWish>
     </>

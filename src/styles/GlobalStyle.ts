@@ -39,6 +39,7 @@ const GlobalStyle = styled.createGlobalStyle`
 
   body,
   button,
+  textarea,
   input {
     font-family: "jeong", sans-serif;
     font-size: 1em;

@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import client from "./client";
 
 // * GET 요청 보내기 *
@@ -19,7 +19,7 @@ interface GETWishListResponse {
   wish_list: wishListItem[];
 }
 
-interface wishListItem {
+export interface wishListItem {
   id: number;
   from_name: string;
   content: string;
@@ -29,7 +29,7 @@ interface wishListItem {
 }
 
 const useGETWishList = (params: GETWishListRequest) => {
-  const { sorted, page, keyword } = params;
+  const { sorted } = params;
   return useQuery<GETWishListResponse>(
     ["wishList", sorted],
     async (): Promise<GETWishListResponse> => {
@@ -47,4 +47,17 @@ const useGETWishList = (params: GETWishListRequest) => {
   );
 };
 
-export { useGETWishList };
+const useGetInfiniteWishList = (params: GETWishListRequest) => {
+  const { sorted, keyword } = params;
+  return useInfiniteQuery(
+    ["wishList", sorted],
+    ({ pageParam = 1 }) => client.get(`wish/list`, { params: { ...params, page: pageParam } }),
+    {
+      getNextPageParam: (lastPage) => {
+        return lastPage.data.wish_list.length === 10 ? lastPage.config.params.page + 1 : undefined;
+      },
+    }
+  );
+};
+
+export { useGETWishList, useGetInfiniteWishList };

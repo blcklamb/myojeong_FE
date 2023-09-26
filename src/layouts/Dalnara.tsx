@@ -4,17 +4,27 @@ import Input from "components/story/Input";
 import { styled } from "styled-components";
 import { useState } from "react";
 import TopButton from "components/story/TopButton";
-import { useGETWishList } from "hooks/api/dalnara";
+import { useGETWishList, useGetInfiniteWishList, wishListItem } from "hooks/api/dalnara";
+import useIntersection from "hooks/useIntersection";
 
 const Dalnara = () => {
   const [inputValue, setInputValue] = useState("");
   const [sortType, setSortType] = useState("recent");
-  const { data } = useGETWishList({
+  const { data, fetchNextPage, hasNextPage, isFetching, refetch } = useGetInfiniteWishList({
     sorted: sortType,
+    keyword: inputValue,
+  });
+
+  const ref = useIntersection((entry, observer) => {
+    observer.unobserve(entry.target);
+    if (hasNextPage && !isFetching) fetchNextPage();
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+    setTimeout(() => {
+      refetch();
+    }, 100);
   };
 
   const onChangeSortType = (option: string) => {
@@ -34,9 +44,12 @@ const Dalnara = () => {
         <Input value={inputValue} height={4.8} placeholder="소원작성자 검색" onChangeInput={handleInputChange} />
         <Dropdown options={["최신", "좋아요"]} onSelect={onChangeSortType} />
       </StyledInputWrapper>
-      {data?.wish_list.map((wish) => (
-        <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
-      ))}
+      {data?.pages.map((wishList) =>
+        wishList.data.wish_list.map((wish: wishListItem) => (
+          <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
+        ))
+      )}
+      <div ref={ref} />
     </StyledDalnara>
   );
 };

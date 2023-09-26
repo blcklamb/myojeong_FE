@@ -4,7 +4,7 @@ import Input from "components/story/Input";
 import { styled } from "styled-components";
 import { useState } from "react";
 import TopButton from "components/story/TopButton";
-import { useGETWishList, useGetInfiniteWishList, wishListItem } from "hooks/api/dalnara";
+import { useGetInfiniteWishList, wishListItem } from "hooks/api/dalnara";
 import useIntersection from "hooks/useIntersection";
 
 const Dalnara = () => {
@@ -37,13 +37,16 @@ const Dalnara = () => {
 
   return (
     <StyledDalnara>
-      <StyledTopButtonWrapper>
-        <TopButton text="소원주문하러가기" onClick={goTo__Page} />
-      </StyledTopButtonWrapper>
-      <StyledInputWrapper>
-        <Input value={inputValue} height={4.8} placeholder="소원작성자 검색" onChangeInput={handleInputChange} />
-        <Dropdown options={["최신", "좋아요"]} onSelect={onChangeSortType} />
-      </StyledInputWrapper>
+      <StyledTopWrapper>
+        <StyledTopButtonWrapper>
+          <TopButton text="소원주문하러가기" onClick={goTo__Page} />
+        </StyledTopButtonWrapper>
+        <StyledInputWrapper>
+          <Input value={inputValue} height={4.8} placeholder="소원작성자 검색" onChangeInput={handleInputChange} />
+          <Dropdown options={["최신", "좋아요"]} onSelect={onChangeSortType} />
+        </StyledInputWrapper>
+      </StyledTopWrapper>
+
       {data?.pages.map((wishList) =>
         wishList.data.wish_list.map((wish: wishListItem) => (
           <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
@@ -57,11 +60,22 @@ const Dalnara = () => {
 export default Dalnara;
 
 const StyledDalnara = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  position: relative;
+`;
+
+const StyledTopWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(9, 35, 46);
+  position: sticky;
+  top: 0;
+  left: 0;
 `;
 
 const StyledTopButtonWrapper = styled.div`
@@ -74,9 +88,9 @@ const StyledTopButtonWrapper = styled.div`
 const StyledInputWrapper = styled.div`
   margin: 3rem 0 2.5rem 0;
   width: 32rem;
-  position: sticky;
-  top: 0;
-  background-color: rgba(9, 35, 46, 0.5);
+
   display: flex;
   gap: 1rem;
 `;
+
+const StyledBottomWraapper = styled.div``;

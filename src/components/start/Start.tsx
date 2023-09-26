@@ -13,7 +13,11 @@ const Start = () => {
         <StyledH1>묘정 송편</StyledH1>
       </StyledTop>
       <StyledMiddle>
-        <img src="https://picsum.photos/120/120" alt="myojeong" />
+        <img
+          className="floating-img"
+          src="https://picsum.photos/120/120"
+          alt="myojeong"
+        />
       </StyledMiddle>
       <StyledBottom>
         <Button

@@ -19,7 +19,7 @@ const Badge = ({ badgeType, type, onClick }: BadgeProps) => {
 export default Badge;
 
 const BadgeColor = {
-  background: { 1: "##F9F5FF", 2: "#FEF3F2", 3: "#FFFAEB", 4: "#ECFDF3" },
+  background: { 1: "#F9F5FF", 2: "#FEF3F2", 3: "#FFFAEB", 4: "#ECFDF3" },
   span: { 1: "#9E77ED", 2: "#F04438", 3: "#F79009", 4: "#12B76A" },
   font: { 1: "#6941C6", 2: "#B42318", 3: "#B54708", 4: "#027A48" },
 };

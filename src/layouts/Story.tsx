@@ -7,6 +7,7 @@ import Turn from "components/story/Turn";
 import TypeTo from "components/story/TypeTo";
 import { styled } from "styled-components";
 import { usePOSTWish } from "hooks/api/story";
+import { useTransition, animated } from "react-spring";
 
 type TStep =
   | "INTRO"
@@ -35,6 +36,13 @@ const Story = () => {
   });
 
   const { mutate } = usePOSTWish();
+
+  const transitions = useTransition(step, {
+    from: { opacity: 0, transform: "translate3d(1000vw, 0, 0)" },
+    enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+    leave: { opacity: 0, transform: "translate3d(-20vw, 0, 0)" },
+    exitBeforeEnter: true,
+  });
 
   const onNextNameFrom = (name: string) => {
     setStoryData((prev) => {
@@ -66,30 +74,34 @@ const Story = () => {
 
   return (
     <StyledLayout>
-      {step === "INTRO" && (
-        <Intro
-          onNext={() => setStep("TURN")}
-          onSkip={() => setStep("NAME-FROM")}
-        />
-      )}
-      {step === "TURN" && (
-        <Turn
-          onNext={() => setStep("NAME-FROM")}
-          onSkip={() => setStep("NAME-FROM")}
-        />
-      )}
-      {step === "NAME-FROM" && <NameFrom onNext={onNextNameFrom} />}
-      {step === "TYPE-TO" && <TypeTo onNext={onNextTypeTo} />}
-      {step === "NAME-TO" && (
-        <NameTo onNext={onNextNameTo} toType={storyData.toType} />
-      )}
-      {step === "MAKE-WISH" && (
-        <MakeWish
-          onNext={onNextMakeWish}
-          fromName={storyData.fromName}
-          toName={storyData.toName}
-        />
-      )}
+      {transitions((props, item) => (
+        <animated.div style={props}>
+          {item === "INTRO" && (
+            <Intro
+              onNext={() => setStep("TURN")}
+              onSkip={() => setStep("NAME-FROM")}
+            />
+          )}
+          {item === "TURN" && (
+            <Turn
+              onNext={() => setStep("NAME-FROM")}
+              onSkip={() => setStep("NAME-FROM")}
+            />
+          )}
+          {item === "NAME-FROM" && <NameFrom onNext={onNextNameFrom} />}
+          {item === "TYPE-TO" && <TypeTo onNext={onNextTypeTo} />}
+          {item === "NAME-TO" && (
+            <NameTo onNext={onNextNameTo} toType={storyData.toType} />
+          )}
+          {item === "MAKE-WISH" && (
+            <MakeWish
+              onNext={onNextMakeWish}
+              fromName={storyData.fromName}
+              toName={storyData.toName}
+            />
+          )}
+        </animated.div>
+      ))}
     </StyledLayout>
   );
 };

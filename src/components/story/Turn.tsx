@@ -14,7 +14,11 @@ const Turn = ({ onNext, onSkip }: TurnProps) => {
         <TopButton text="이야기 넘어가기" onClick={onSkip} />
       </StyledTop>
       <StyledMiddle>
-        <img src="https://picsum.photos/120/120" alt="songpyeon" />
+        <img
+          className="floating-img"
+          src="https://picsum.photos/120/120"
+          alt="songpyeon"
+        />
       </StyledMiddle>
       <StyledBottom>
         <Paragraph align="center">
@@ -32,7 +36,9 @@ const Turn = ({ onNext, onSkip }: TurnProps) => {
 
 export default Turn;
 
-const StyledWrapper = styled.div``;
+const StyledWrapper = styled.div`
+  position: relative;
+`;
 
 const StyledTop = styled.div`
   display: flex;

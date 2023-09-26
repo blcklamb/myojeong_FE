@@ -6,35 +6,24 @@ import centerSP from "assets/sp7 1.png";
 import { COLORS } from "styles/color";
 import Button from "components/story/Button";
 import Icon from "components/Icon";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 const Songpyeon = () => {
   const [searchParams] = useSearchParams();
 
   const navigate = useNavigate();
 
-  const { data } = useGETWish({
+  const { data, refetch } = useGETWish({
     id: parseInt(searchParams.get("wishId") as string),
   });
-
-  // MOCK DATA
-  // const data = {
-  //   id: searchParams.get("wishId") as string,
-  //   from_name: "테일러",
-  //   to_name: "쩡",
-  //   content:
-  //     "헌법재판소는 법관의 자격을 가진 9인의 재판관으로 구성하며, 재판관은 대통령이 임명한다. 국회의원은 국회에서 직무상 행한 발언과 표결에 관하여 국회외에서 웅냥냥냥",
-  //   emoji: "🪄",
-  //   is_myself: true,
-  // };
 
   const copyUrlToClipboard = async () => {
     // http에서는 작동하지 않음
     try {
       await navigator.clipboard.writeText(location.href);
-      console.log("Page URL copied to clipboard");
+      alert("송편 링크가 복사되었어요.");
     } catch (err) {
-      console.error("Failed to copy: ", err);
+      alert("송편 링크 복사를 실패했어요. 직접 복사해서 공유해주세요.");
     }
   };
 
@@ -48,6 +37,10 @@ const Songpyeon = () => {
     [data]
   );
   const isRightAfterPOST = true;
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <div>

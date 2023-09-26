@@ -1,39 +1,40 @@
 import Dropdown from "components/dalnara/Dropdown";
 import Wish from "components/dalnara/wishCard/Wish";
 import Input from "components/story/Input";
-
-import jsonData from "components/dalnara/data.json";
 import { styled } from "styled-components";
 import { useState } from "react";
+import TopButton from "components/story/TopButton";
+import { useGETWishList } from "hooks/api/dalnara";
 
 const Dalnara = () => {
   const [inputValue, setInputValue] = useState("");
-  const { wish_list } = jsonData;
+  const [sortType, setSortType] = useState("recent");
+  const { data } = useGETWishList({
+    sorted: sortType,
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
-  const onClick = (option: string) => {
-    console.log(option);
+  const onChangeSortType = (option: string) => {
+    setSortType(option === "최신" ? "recent" : "songpyeon");
+  };
+
+  const goTo__Page = () => {
+    console.log("gogo");
   };
 
   return (
     <StyledDalnara>
+      <StyledTopButtonWrapper>
+        <TopButton text="소원주문하러가기" onClick={goTo__Page} />
+      </StyledTopButtonWrapper>
       <StyledInputWrapper>
         <Input value={inputValue} height={4.8} placeholder="소원작성자 검색" onChangeInput={handleInputChange} />
-        <Dropdown options={["최신", "좋아요"]} onSelect={onClick} />
+        <Dropdown options={["최신", "좋아요"]} onSelect={onChangeSortType} />
       </StyledInputWrapper>
-      {wish_list.map((wish) => (
-        <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
-      ))}
-      {wish_list.map((wish) => (
-        <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
-      ))}
-      {wish_list.map((wish) => (
-        <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
-      ))}
-      {wish_list.map((wish) => (
+      {data?.wish_list.map((wish) => (
         <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
       ))}
     </StyledDalnara>
@@ -50,8 +51,15 @@ const StyledDalnara = styled.div`
   gap: 1rem;
 `;
 
+const StyledTopButtonWrapper = styled.div`
+  width: 32rem;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: end;
+`;
+
 const StyledInputWrapper = styled.div`
-  margin: 2.5rem 0;
+  margin: 3rem 0 2.5rem 0;
   width: 32rem;
   position: sticky;
   top: 0;

@@ -15,6 +15,8 @@ const Dalnara = () => {
     keyword: inputValue,
   });
 
+  console.log(data?.pages[0].data);
+
   const ref = useIntersection((entry, observer) => {
     observer.unobserve(entry.target);
     if (hasNextPage && !isFetching) fetchNextPage();
@@ -49,7 +51,15 @@ const Dalnara = () => {
 
       {data?.pages.map((wishList) =>
         wishList.data.wish_list.map((wish: wishListItem) => (
-          <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
+          <Wish
+            key={wish.id}
+            from_name={wish.from_name}
+            content={wish.content}
+            sp1={wish.sp1}
+            sp2={wish.sp2}
+            sp3={wish.sp3}
+            id={wish.id}
+          />
         ))
       )}
       <div ref={ref} />

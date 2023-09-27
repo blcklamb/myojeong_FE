@@ -6,7 +6,8 @@ import centerSP from "assets/sp7 1.png";
 import { COLORS } from "styles/color";
 import Button from "components/story/Button";
 import Icon from "components/Icon";
-import { useEffect, useMemo } from "react";
+import { ReactNode, useEffect, useMemo, useRef } from "react";
+import { toPng } from "html-to-image";
 
 const Songpyeon = () => {
   const [searchParams] = useSearchParams();
@@ -14,9 +15,23 @@ const Songpyeon = () => {
   const navigate = useNavigate();
   const { state: routerLocation } = useLocation();
 
+  const songpyeonPreviewRef = useRef<HTMLDivElement>(null);
+
   const { data, refetch } = useGETWish({
     id: parseInt(searchParams.get("wishId") as string),
   });
+
+  const onClickSongpyeonToPNG = async () => {
+    if (songpyeonPreviewRef.current) {
+      toPng(songpyeonPreviewRef.current).then((dataUrl) => {
+        const link = document.createElement("a");
+        link.download = `${songpyeonOwner}의 소원 송편`;
+        link.href = dataUrl;
+        document.body.appendChild(link);
+        link.click();
+      });
+    }
+  };
 
   const openShareBottomSheet = async () => {
     try {
@@ -71,18 +86,20 @@ const Songpyeon = () => {
               여기 ${songpyeonOwner}의 송편이애오.`}
           </Paragraph>
         )}
+      </StyledTop>
+      <StyledPreview ref={songpyeonPreviewRef}>
         <StyledSongpyeon>
           <StyledEmoji>{data?.emoji}</StyledEmoji>
-          <StyledSPImage src={centerSP} alt="center-songpyeon"></StyledSPImage>
+          <StyledSPImage src={centerSP} alt="center-songpyeon" />
         </StyledSongpyeon>
-      </StyledTop>
-      <StyledMiddle>
-        <StyledP style={{ textAlign: "left" }}>{toName}에게</StyledP>
-        <StyledP>{data?.content}</StyledP>
-        <StyledP style={{ textAlign: "right" }}>
-          {data?.from_name}의 소원
-        </StyledP>
-      </StyledMiddle>
+        <StyledMiddle>
+          <StyledP style={{ textAlign: "left" }}>{toName}에게</StyledP>
+          <StyledP>{data?.content}</StyledP>
+          <StyledP style={{ textAlign: "right" }}>
+            {data?.from_name}의 소원
+          </StyledP>
+        </StyledMiddle>
+      </StyledPreview>
       <StyledBottom>
         {isRightAfterPOST && (
           <StyledBottomUpper>
@@ -90,7 +107,7 @@ const Songpyeon = () => {
               color="LIGHT_BROWN"
               type="secondary"
               text="소원 저장하기"
-              onClick={() => console.log("clicked save")}
+              onClick={onClickSongpyeonToPNG}
             />
             <StyledCircleButton onClick={openShareBottomSheet}>
               <Icon name="instagram" width={54} height={54} />
@@ -130,16 +147,26 @@ const StyledSongpyeon = styled.div`
   justify-content: center;
 
   margin-top: 2rem;
+  height: 5rem;
+
+  position: relative;
 `;
 
 const StyledSPImage = styled.img`
+  position: absolute;
+  z-index: 1;
   width: 7rem;
   height: auto;
 `;
 
 const StyledEmoji = styled.span`
   position: absolute;
+  z-index: 2;
   font-size: 2.4rem;
+`;
+
+const StyledPreview = styled.div`
+  padding-bottom: 3.6rem;
 `;
 
 const StyledMiddle = styled.div`
@@ -165,8 +192,6 @@ const StyledP = styled.p`
 `;
 
 const StyledBottom = styled.div`
-  margin-top: 3.6rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;

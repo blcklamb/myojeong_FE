@@ -2,9 +2,9 @@ import Button from "components/story/Button";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { COLORS } from "styles/color";
-import FullMoon from "assets/FullMoon.png";
+import FullMoon from "assets/start/FullMoon.png";
+import BorderMoon from "assets/start/BorderMoon.png";
 import Myojeong from "assets/myojeong.png";
-import BorderMoon from "assets/BorderMoon.png";
 
 const Start = () => {
   const navigate = useNavigate();

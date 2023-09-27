@@ -42,7 +42,7 @@ const TypeTo = ({ onNext }: TypeToProps) => {
         <Input
           value={type}
           height={6.4}
-          placeholder="예시) 테일러"
+          placeholder="ex) 연인"
           onChangeInput={onChangeType}
         />
         <Paragraph align="right">{`(을/를) 위한 소원이야.`}</Paragraph>

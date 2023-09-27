@@ -110,7 +110,7 @@ const StyledTextAreaWrapper = styled.div`
   height: 21.8rem;
 
   border-radius: 3rem;
-  background: rgba(217, 217, 217, 0.6);
+  background: rgba(217, 217, 217, 0.7);
 
   padding: 1.2rem 3.2rem 1.2rem;
 `;

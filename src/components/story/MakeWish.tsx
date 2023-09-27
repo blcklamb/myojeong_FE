@@ -36,7 +36,7 @@ const MakeWish = ({ onNext, fromName, toName }: MakeWishProps) => {
       </StyledTop>
       <StyledMiddle>
         <StyledTextAreaWrapper>
-          <StyledToName>{toName}에게</StyledToName>
+          <StyledToName>{toName.length > 0 ? toName : "나"}에게</StyledToName>
           <StyledTextArea
             placeholder="예시) 우산 깜박하고 안 챙긴 날에 비 안 오게 해주세요!"
             value={wishContent}

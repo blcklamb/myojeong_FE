@@ -13,11 +13,22 @@ export interface IWishList {
 }
 
 const Wish = ({ from_name, content, sp1, sp2, sp3, id }: IWishList) => {
+  const onCopyClipBoard = async () => {
+    try {
+      await navigator.clipboard.writeText(`myojeong.com/songpyeon?wishId=${id}`);
+      alert("클립보드에 링크가 복사되었어요.");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <StyledWish>
         <StyledHeader>
-          <Icon name="share" width={24} height={24} />
+          <div onClick={onCopyClipBoard}>
+            <Icon name="share" width={24} height={24} />
+          </div>
         </StyledHeader>
         <StyledBody>
           <StyledWishContent>{content}</StyledWishContent>

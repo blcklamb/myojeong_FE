@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+
+  min-width: 39rem;
+  min-height: 84.4rem;
 }
 
 .floating-img {

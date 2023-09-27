@@ -17,6 +17,19 @@ const Songpyeon = () => {
     id: parseInt(searchParams.get("wishId") as string),
   });
 
+  const openShareBottomSheet = async () => {
+    try {
+      await navigator.share({
+        files: [],
+        text: `${toName}을/를 위한 송편이 도착했어요`,
+        title: `묘정 송편`,
+        url: `${location.href}`,
+      });
+    } catch (err) {
+      alert("공유하기를 실패했어요. 다음에 다시 시도해주세요.");
+    }
+  };
+
   const copyUrlToClipboard = async () => {
     // http에서는 작동하지 않음
     try {
@@ -78,7 +91,7 @@ const Songpyeon = () => {
               text="소원 저장하기"
               onClick={() => console.log("clicked save")}
             />
-            <StyledCircleButton onClick={() => console.log("instagram click")}>
+            <StyledCircleButton onClick={openShareBottomSheet}>
               <Icon name="instagram" width={54} height={54} />
             </StyledCircleButton>
             <StyledCircleButton onClick={copyUrlToClipboard}>

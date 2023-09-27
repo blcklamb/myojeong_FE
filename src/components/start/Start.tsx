@@ -5,9 +5,23 @@ import { COLORS } from "styles/color";
 import FullMoon from "assets/start/FullMoon.png";
 import BorderMoon from "assets/start/BorderMoon.png";
 import Myojeong from "assets/myojeong.png";
+import { useGETWishCount } from "hooks/api/start";
+import { useSpring } from "react-spring";
+import { useMemo, useRef } from "react";
+import Span from "components/story/Span";
 
 const Start = () => {
   const navigate = useNavigate();
+  const { data: wishCount } = useGETWishCount();
+
+  const moonRef = useRef<HTMLDivElement>(null);
+  const moonWidth = useMemo<number>(() => {
+    return moonRef.current ? moonRef.current.offsetWidth : 0;
+  }, [moonRef]);
+  console.log(moonWidth);
+
+  const props = useSpring({ width: wishCount ? (wishCount / 500) * 100 : 0 });
+
   return (
     <>
       <StyledTop>
@@ -15,7 +29,10 @@ const Start = () => {
         <StyledH1>묘정 송편</StyledH1>
       </StyledTop>
       <StyledMiddle>
-        <div style={{ position: "relative", width: "100%", height: "24rem" }}>
+        <div
+          ref={moonRef}
+          style={{ position: "relative", width: "100%", height: "24rem" }}
+        >
           <img
             style={{
               position: "absolute",
@@ -36,6 +53,9 @@ const Start = () => {
               left: "50%",
               translate: "-50% -40%",
               zIndex: 2,
+
+              // width: "100%",
+              // height: "100%",
             }}
             className="floating-img"
             src={BorderMoon}
@@ -56,6 +76,7 @@ const Start = () => {
         </div>
       </StyledMiddle>
       <StyledBottom>
+        <Span>현재 {wishCount}개의 소원이 모였어요!</Span>
         <Button
           text="묘정 이야기 듣기"
           onClick={() => navigate("/story")}
@@ -76,7 +97,7 @@ const Start = () => {
 export default Start;
 
 const StyledTop = styled.div`
-  margin-top: 11rem;
+  margin-top: 4rem;
 `;
 
 const StyledH4 = styled.h4`
@@ -97,5 +118,5 @@ const StyledBottom = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 `;

@@ -4,7 +4,7 @@ import { COLORS } from "styles/color";
 import Icon from "components/Icon";
 
 export interface IWishList {
-  id?: number;
+  id: number;
   from_name: string;
   content: string;
   sp1: number;
@@ -12,7 +12,7 @@ export interface IWishList {
   sp3: number;
 }
 
-const Wish = ({ from_name, content, sp1, sp2, sp3 }: IWishList) => {
+const Wish = ({ from_name, content, sp1, sp2, sp3, id }: IWishList) => {
   return (
     <>
       <StyledWish>
@@ -24,9 +24,9 @@ const Wish = ({ from_name, content, sp1, sp2, sp3 }: IWishList) => {
           <StyledWisher>- {from_name}</StyledWisher>
         </StyledBody>
         <StyledFooter>
-          <SongpyeonBtn songpyeonType="sp10" count={sp1} />
-          <SongpyeonBtn songpyeonType="sp11" count={sp2} />
-          <SongpyeonBtn songpyeonType="sp13" count={sp3} />
+          <SongpyeonBtn songpyeonType="sp2" count={sp1} id={id} />
+          <SongpyeonBtn songpyeonType="sp3" count={sp2} id={id} />
+          <SongpyeonBtn songpyeonType="sp4" count={sp3} id={id} />
         </StyledFooter>
       </StyledWish>
     </>

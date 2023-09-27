@@ -6,10 +6,12 @@ import { useState } from "react";
 import TopButton from "components/story/TopButton";
 import { useGetInfiniteWishList, wishListItem } from "hooks/api/dalnara";
 import useIntersection from "hooks/useIntersection";
+import { useNavigate } from "react-router-dom";
 
 const Dalnara = () => {
   const [inputValue, setInputValue] = useState("");
   const [sortType, setSortType] = useState("recent");
+  const navigate = useNavigate();
   const { data, fetchNextPage, hasNextPage, isFetching, refetch } = useGetInfiniteWishList({
     sorted: sortType,
     keyword: inputValue,
@@ -31,15 +33,11 @@ const Dalnara = () => {
     setSortType(option === "최신" ? "recent" : "songpyeon");
   };
 
-  const goTo__Page = () => {
-    console.log("gogo");
-  };
-
   return (
     <StyledDalnara>
       <StyledTopWrapper>
         <StyledTopButtonWrapper>
-          <TopButton text="소원주문하러가기" onClick={goTo__Page} />
+          <TopButton text="소원주문하러가기" onClick={() => navigate("/story")} />
         </StyledTopButtonWrapper>
         <StyledInputWrapper>
           <Input value={inputValue} height={4.8} placeholder="소원작성자 검색" onChangeInput={handleInputChange} />
@@ -49,7 +47,15 @@ const Dalnara = () => {
 
       {data?.pages.map((wishList) =>
         wishList.data.wish_list.map((wish: wishListItem) => (
-          <Wish key={wish.id} from_name={wish.from_name} content={wish.content} sp1={100} sp2={1000} sp3={90} />
+          <Wish
+            key={wish.id}
+            from_name={wish.from_name}
+            content={wish.content}
+            sp1={wish.sp1}
+            sp2={wish.sp2}
+            sp3={wish.sp3}
+            id={wish.id}
+          />
         ))
       )}
       <div ref={ref} />

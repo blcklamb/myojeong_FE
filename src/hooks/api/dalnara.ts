@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import client from "./client";
 
 // * GET 요청 보내기 *
@@ -48,7 +48,7 @@ const useGETWishList = (params: GETWishListRequest) => {
 };
 
 const useGetInfiniteWishList = (params: GETWishListRequest) => {
-  const { sorted, keyword } = params;
+  const { sorted } = params;
   return useInfiniteQuery(
     ["wishList", sorted],
     ({ pageParam = 1 }) => client.get(`wish/list`, { params: { ...params, page: pageParam } }),
@@ -60,4 +60,30 @@ const useGetInfiniteWishList = (params: GETWishListRequest) => {
   );
 };
 
-export { useGETWishList, useGetInfiniteWishList };
+interface POSTLikeRequest {
+  id: number;
+  type: string;
+}
+/**
+ * @interface POSTLikeResponse
+ * 소원작성 POST API 요청 Response
+ */
+interface POSTLikeResponse {
+  id: number;
+  success: boolean;
+}
+
+const usePOSTLike = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (like: POSTLikeRequest): Promise<POSTLikeResponse> => {
+      const { data } = await client.post(`/wish/like`, like);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.refetchQueries({ queryKey: ["wishList"] });
+    },
+  });
+};
+
+export { useGETWishList, useGetInfiniteWishList, usePOSTLike };

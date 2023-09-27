@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import TopButton from "./TopButton";
 import Paragraph from "./Paragraph";
+import RainingMyojeong from "./RainingMyojeong";
 
 interface TurnProps {
   onNext: () => void;
@@ -14,11 +15,7 @@ const Turn = ({ onNext, onSkip }: TurnProps) => {
         <TopButton text="이야기 넘어가기" onClick={onSkip} />
       </StyledTop>
       <StyledMiddle>
-        <img
-          className="floating-img"
-          src="https://picsum.photos/120/120"
-          alt="songpyeon"
-        />
+        <RainingMyojeong />
       </StyledMiddle>
       <StyledBottom>
         <Paragraph align="center">

@@ -1,6 +1,8 @@
 import Paragraph from "./Paragraph";
 import TopButton from "./TopButton";
 import { styled } from "styled-components";
+import TiltMyojeong from "assets/tilt.gif";
+import { StyledBlurredMoon } from "./MakeWish";
 
 interface IntroProps {
   onNext: () => void;
@@ -14,11 +16,7 @@ const Intro = ({ onNext, onSkip }: IntroProps) => {
         <TopButton text="이야기 넘어가기" onClick={onSkip} />
       </StyledTop>
       <StyledMiddle>
-        <img
-          className="floating-img"
-          src="https://picsum.photos/120/120"
-          alt="myojeong"
-        />
+        <img className="floating-img" src={TiltMyojeong} alt="myojeong" />
       </StyledMiddle>
       <StyledBottom>
         <Paragraph align="center">
@@ -27,6 +25,7 @@ const Intro = ({ onNext, onSkip }: IntroProps) => {
           토끼 요정, 묘정이애오.`}
         </Paragraph>
       </StyledBottom>
+      <StyledBlurredMoon />
     </StyledWrapper>
   );
 };

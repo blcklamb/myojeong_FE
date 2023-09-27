@@ -1,5 +1,4 @@
 import Button from "components/story/Button";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { COLORS } from "styles/color";
@@ -29,34 +28,31 @@ const Start = () => {
             src={Myojeong}
             alt="myojeong"
           />
-          <div
+          <img
             style={{
+              display: "inline-block",
               position: "absolute",
-              top: "10%",
-              left: "20%",
-              transform: "translate(-50%, -50%)",
+              top: "50%",
+              left: "50%",
+              translate: "-50% -40%",
               zIndex: 2,
             }}
-          >
-            <img
-              style={{
-                position: "absolute",
-                zIndex: 2,
-              }}
-              className="floating-img"
-              src={BorderMoon}
-              alt="border=moon"
-            />
-            <img
-              style={{
-                position: "absolute",
-                zIndex: 1,
-              }}
-              className="floating-img"
-              src={FullMoon}
-              alt="full-moon"
-            />
-          </div>
+            className="floating-img"
+            src={BorderMoon}
+            alt="border-moon"
+          />
+          <img
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              translate: "-50% -40%",
+              zIndex: 1,
+            }}
+            className="floating-img"
+            src={FullMoon}
+            alt="full-moon"
+          />
         </div>
       </StyledMiddle>
       <StyledBottom>

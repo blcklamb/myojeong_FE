@@ -6,16 +6,16 @@ import { useState } from "react";
 import TopButton from "components/story/TopButton";
 import { useGetInfiniteWishList, wishListItem } from "hooks/api/dalnara";
 import useIntersection from "hooks/useIntersection";
+import { useNavigate } from "react-router-dom";
 
 const Dalnara = () => {
   const [inputValue, setInputValue] = useState("");
   const [sortType, setSortType] = useState("recent");
+  const navigate = useNavigate();
   const { data, fetchNextPage, hasNextPage, isFetching, refetch } = useGetInfiniteWishList({
     sorted: sortType,
     keyword: inputValue,
   });
-
-  console.log(data?.pages[0].data);
 
   const ref = useIntersection((entry, observer) => {
     observer.unobserve(entry.target);
@@ -33,15 +33,11 @@ const Dalnara = () => {
     setSortType(option === "최신" ? "recent" : "songpyeon");
   };
 
-  const goTo__Page = () => {
-    console.log("gogo");
-  };
-
   return (
     <StyledDalnara>
       <StyledTopWrapper>
         <StyledTopButtonWrapper>
-          <TopButton text="소원주문하러가기" onClick={goTo__Page} />
+          <TopButton text="소원주문하러가기" onClick={() => navigate("/story")} />
         </StyledTopButtonWrapper>
         <StyledInputWrapper>
           <Input value={inputValue} height={4.8} placeholder="소원작성자 검색" onChangeInput={handleInputChange} />

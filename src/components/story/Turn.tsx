@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import TopButton from "./TopButton";
 import Paragraph from "./Paragraph";
 import RainingMyojeong from "./RainingMyojeong";
+import { StyledHiddenLayout } from "./Intro";
 
 interface TurnProps {
   onNext: () => void;
@@ -10,10 +11,11 @@ interface TurnProps {
 
 const Turn = ({ onNext, onSkip }: TurnProps) => {
   return (
-    <StyledWrapper onClick={() => onNext()}>
+    <StyledWrapper>
       <StyledTop>
         <TopButton text="이야기 넘어가기" onClick={onSkip} />
       </StyledTop>
+      <StyledHiddenLayout onClick={() => onNext()} />
       <StyledMiddle>
         <RainingMyojeong />
       </StyledMiddle>

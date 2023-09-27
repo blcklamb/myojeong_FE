@@ -1,6 +1,6 @@
 import Paragraph from "components/story/Paragraph";
 import { useGETWish } from "hooks/api/story";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import centerSP from "assets/sp7 1.png";
 import { COLORS } from "styles/color";
@@ -12,6 +12,7 @@ const Songpyeon = () => {
   const [searchParams] = useSearchParams();
 
   const navigate = useNavigate();
+  const { state: routerLocation } = useLocation();
 
   const { data, refetch } = useGETWish({
     id: parseInt(searchParams.get("wishId") as string),
@@ -49,7 +50,7 @@ const Songpyeon = () => {
       data ? (data.is_myself ? data.from_name : data.to_name) : "송편주인",
     [data]
   );
-  const isRightAfterPOST = true;
+  const isRightAfterPOST = useMemo(() => !!routerLocation, []);
 
   useEffect(() => {
     refetch();

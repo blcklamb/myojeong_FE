@@ -11,10 +11,11 @@ interface IntroProps {
 
 const Intro = ({ onNext, onSkip }: IntroProps) => {
   return (
-    <StyledWrapper onClick={() => onNext()}>
+    <StyledWrapper>
       <StyledTop>
         <TopButton text="이야기 넘어가기" onClick={onSkip} />
       </StyledTop>
+      <StyledHiddenLayout onClick={() => onNext()} />
       <StyledMiddle>
         <img className="floating-img" src={TiltMyojeong} alt="myojeong" />
       </StyledMiddle>
@@ -40,6 +41,13 @@ const StyledTop = styled.div`
   display: flex;
   justify-content: end;
   margin-top: 6.4rem;
+`;
+
+export const StyledHiddenLayout = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
 `;
 
 const StyledMiddle = styled.div`

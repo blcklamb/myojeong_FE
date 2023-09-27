@@ -29,7 +29,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
           <>
             <StyledNaviWrapper>
               <Icon name="navigation" height={20} width={20} />
-              <span>정렬</span>
+              <StyledSpan>정렬</StyledSpan>
             </StyledNaviWrapper>
           </>
         )}
@@ -94,4 +94,8 @@ const StyledNaviWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+`;
+
+const StyledSpan = styled.span`
+  color: black;
 `;

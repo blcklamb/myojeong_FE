@@ -7,6 +7,7 @@ import TopButton from "components/story/TopButton";
 import { useGetInfiniteWishList, wishListItem } from "hooks/api/dalnara";
 import useIntersection from "hooks/useIntersection";
 import { useNavigate } from "react-router-dom";
+import { COLORS } from "styles/color";
 
 const Dalnara = () => {
   const [inputValue, setInputValue] = useState("");
@@ -71,17 +72,17 @@ const StyledDalnara = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 3rem;
   position: relative;
 `;
 
 const StyledTopWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: rgba(9, 35, 46);
+  background-color: ${COLORS.BLACK};
   position: sticky;
   top: 0;
-  left: 0;
+  z-index: 1;
 `;
 
 const StyledTopButtonWrapper = styled.div`
@@ -93,10 +94,7 @@ const StyledTopButtonWrapper = styled.div`
 
 const StyledInputWrapper = styled.div`
   margin: 3rem 0 2.5rem 0;
-  width: 32rem;
-
+  width: 33rem;
   display: flex;
   gap: 1rem;
 `;
-
-const StyledBottomWraapper = styled.div``;

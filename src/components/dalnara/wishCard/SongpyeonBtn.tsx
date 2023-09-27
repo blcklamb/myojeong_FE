@@ -4,13 +4,16 @@ import styled from "styled-components";
 const SongpyeonBtn = ({ songpyeonType, count, id }: { songpyeonType: string; count: number; id: number }) => {
   const { mutate } = usePOSTLike();
 
+  const vibrate = () => navigator.vibrate && navigator.vibrate(100);
   const onSpClick = () => {
+    vibrate();
     const sptype = `sp${Number(songpyeonType.at(-1)) - 1}`;
     mutate({
       id,
       type: sptype,
     });
   };
+
   return (
     <StyledSongpyeon onClick={onSpClick}>
       <StyledSongpyeonImg src={require(`../../../assets/${songpyeonType}.png`)} />

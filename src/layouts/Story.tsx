@@ -51,10 +51,17 @@ const Story = () => {
     setStep("TYPE-TO");
   };
   const onNextTypeTo = (type: string) => {
-    setStoryData((prev) => {
-      return { ...prev, toType: type };
-    });
-    setStep("NAME-TO");
+    if (type === "나") {
+      setStoryData((prev) => {
+        return { ...prev, toName: "", toType: type };
+      });
+      setStep("MAKE-WISH");
+    } else {
+      setStoryData((prev) => {
+        return { ...prev, toType: type };
+      });
+      setStep("NAME-TO");
+    }
   };
   const onNextNameTo = (name: string) => {
     setStoryData((prev) => {

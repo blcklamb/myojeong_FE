@@ -1,6 +1,8 @@
 import Paragraph from "./Paragraph";
 import TopButton from "./TopButton";
 import { styled } from "styled-components";
+import TiltMyojeong from "assets/tilt.gif";
+import { StyledBlurredMoon } from "./MakeWish";
 
 interface IntroProps {
   onNext: () => void;
@@ -9,16 +11,13 @@ interface IntroProps {
 
 const Intro = ({ onNext, onSkip }: IntroProps) => {
   return (
-    <StyledWrapper onClick={() => onNext()}>
+    <StyledWrapper>
       <StyledTop>
         <TopButton text="이야기 넘어가기" onClick={onSkip} />
       </StyledTop>
+      <StyledHiddenLayout onClick={() => onNext()} />
       <StyledMiddle>
-        <img
-          className="floating-img"
-          src="https://picsum.photos/120/120"
-          alt="myojeong"
-        />
+        <img className="floating-img" src={TiltMyojeong} alt="myojeong" />
       </StyledMiddle>
       <StyledBottom>
         <Paragraph align="center">
@@ -27,6 +26,7 @@ const Intro = ({ onNext, onSkip }: IntroProps) => {
           토끼 요정, 묘정이애오.`}
         </Paragraph>
       </StyledBottom>
+      <StyledBlurredMoon />
     </StyledWrapper>
   );
 };
@@ -41,6 +41,13 @@ const StyledTop = styled.div`
   display: flex;
   justify-content: end;
   margin-top: 6.4rem;
+`;
+
+export const StyledHiddenLayout = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
 `;
 
 const StyledMiddle = styled.div`

@@ -37,7 +37,9 @@ const usePOSTWish = () => {
     },
     onSuccess: (data) => {
       queryClient.setQueryData(["wish", data.id], data);
-      navigate(`/songpyeon?wishId=${data.id}`);
+      navigate(`/songpyeon?wishId=${data.id}`, {
+        state: { rightAfterPost: true },
+      });
     },
   });
 };

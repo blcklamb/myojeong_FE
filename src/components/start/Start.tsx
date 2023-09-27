@@ -1,8 +1,10 @@
 import Button from "components/story/Button";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { COLORS } from "styles/color";
+import FullMoon from "assets/FullMoon.png";
+import Myojeong from "assets/myojeong.png";
+import BorderMoon from "assets/BorderMoon.png";
 
 const Start = () => {
   const navigate = useNavigate();
@@ -13,11 +15,45 @@ const Start = () => {
         <StyledH1>묘정 송편</StyledH1>
       </StyledTop>
       <StyledMiddle>
-        <img
-          className="floating-img"
-          src="https://picsum.photos/120/120"
-          alt="myojeong"
-        />
+        <div style={{ position: "relative", width: "100%", height: "24rem" }}>
+          <img
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 3,
+            }}
+            className="floating-img"
+            src={Myojeong}
+            alt="myojeong"
+          />
+          <img
+            style={{
+              display: "inline-block",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              translate: "-50% -40%",
+              zIndex: 2,
+            }}
+            className="floating-img"
+            src={BorderMoon}
+            alt="border-moon"
+          />
+          <img
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              translate: "-50% -40%",
+              zIndex: 1,
+            }}
+            className="floating-img"
+            src={FullMoon}
+            alt="full-moon"
+          />
+        </div>
       </StyledMiddle>
       <StyledBottom>
         <Button
@@ -53,9 +89,7 @@ const StyledH1 = styled.h1`
   font-size: 6.4rem;
 `;
 
-const StyledMiddle = styled.div`
-  margin-top: 1.8rem;
-`;
+const StyledMiddle = styled.div``;
 
 const StyledBottom = styled.div`
   margin-top: 11rem;

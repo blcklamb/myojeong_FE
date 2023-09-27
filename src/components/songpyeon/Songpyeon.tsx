@@ -1,6 +1,6 @@
 import Paragraph from "components/story/Paragraph";
 import { useGETWish } from "hooks/api/story";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import centerSP from "assets/sp7 1.png";
 import { COLORS } from "styles/color";
@@ -12,10 +12,24 @@ const Songpyeon = () => {
   const [searchParams] = useSearchParams();
 
   const navigate = useNavigate();
+  const { state: routerLocation } = useLocation();
 
   const { data, refetch } = useGETWish({
     id: parseInt(searchParams.get("wishId") as string),
   });
+
+  const openShareBottomSheet = async () => {
+    try {
+      await navigator.share({
+        files: [],
+        text: `${toName}을/를 위한 송편이 도착했어요`,
+        title: `묘정 송편`,
+        url: `${location.href}`,
+      });
+    } catch (err) {
+      alert("공유하기를 실패했어요. 다음에 다시 시도해주세요.");
+    }
+  };
 
   const copyUrlToClipboard = async () => {
     // http에서는 작동하지 않음
@@ -36,7 +50,7 @@ const Songpyeon = () => {
       data ? (data.is_myself ? data.from_name : data.to_name) : "송편주인",
     [data]
   );
-  const isRightAfterPOST = true;
+  const isRightAfterPOST = useMemo(() => !!routerLocation, []);
 
   useEffect(() => {
     refetch();
@@ -78,7 +92,7 @@ const Songpyeon = () => {
               text="소원 저장하기"
               onClick={() => console.log("clicked save")}
             />
-            <StyledCircleButton onClick={() => console.log("instagram click")}>
+            <StyledCircleButton onClick={openShareBottomSheet}>
               <Icon name="instagram" width={54} height={54} />
             </StyledCircleButton>
             <StyledCircleButton onClick={copyUrlToClipboard}>

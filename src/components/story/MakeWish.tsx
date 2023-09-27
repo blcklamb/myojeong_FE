@@ -36,7 +36,7 @@ const MakeWish = ({ onNext, fromName, toName }: MakeWishProps) => {
       </StyledTop>
       <StyledMiddle>
         <StyledTextAreaWrapper>
-          <StyledToName>{toName}에게</StyledToName>
+          <StyledToName>{toName.length > 0 ? toName : "나"}에게</StyledToName>
           <StyledTextArea
             placeholder="예시) 우산 깜박하고 안 챙긴 날에 비 안 오게 해주세요!"
             value={wishContent}
@@ -128,7 +128,7 @@ const StyledBottom = styled.div`
   align-items: center;
 `;
 
-const StyledBlurredMoon = styled.span`
+export const StyledBlurredMoon = styled.span`
   height: 16.5rem;
   width: 16.5rem;
 
@@ -139,5 +139,6 @@ const StyledBlurredMoon = styled.span`
 
   position: absolute;
   top: 25rem;
-  left: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;

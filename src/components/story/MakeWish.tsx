@@ -128,7 +128,7 @@ const StyledBottom = styled.div`
   align-items: center;
 `;
 
-const StyledBlurredMoon = styled.span`
+export const StyledBlurredMoon = styled.span`
   height: 16.5rem;
   width: 16.5rem;
 
@@ -139,5 +139,6 @@ const StyledBlurredMoon = styled.span`
 
   position: absolute;
   top: 25rem;
-  left: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;

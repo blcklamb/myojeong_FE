@@ -1,4 +1,4 @@
-import { useTrail, animated, useSprings, easings } from "@react-spring/web";
+import { animated, easings } from "@react-spring/web";
 import { useSpring } from "react-spring";
 import { styled } from "styled-components";
 import nextSP from "assets/sp1 1.png";
@@ -16,10 +16,6 @@ const RainingMyojeong = () => {
       tension: 280,
     },
   }));
-  // const springs = useSprings(2, {
-  //   from: { opacity: 0 },
-  //   to: { opacity: 1 },
-  // });
 
   return (
     <>
@@ -38,9 +34,6 @@ const RainingMyojeong = () => {
           <StyledSongpyeonImg src={nextSP} alt="next-songpyeon" />
         </div>
       </animated.div>
-      {/* {springs.map((props) => (
-        <animated.div style={props}>Hello World</animated.div>
-      ))} */}
     </>
   );
 };

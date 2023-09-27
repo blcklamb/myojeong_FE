@@ -3,6 +3,9 @@ import { styled } from "styled-components";
 import Paragraph from "./Paragraph";
 import Span from "./Span";
 import Button from "./Button";
+import { animated, easings, useSpring } from "react-spring";
+import Myojeong from "assets/myojeong.png";
+import { isValidWish } from "utils/validation";
 
 interface MakeWishProps {
   onNext: (content: string, isOpen: boolean) => void;
@@ -25,6 +28,22 @@ const MakeWish = ({ onNext, fromName, toName }: MakeWishProps) => {
   };
 
   const onToggleOpenCheckbox = () => setIsOpen((prev) => !prev);
+
+  const onClickMakeWishButton = () => {
+    if (isValidWish(wishContent)) onNext(wishContent, isOpen);
+    else alert("소원은 150자 이하애오");
+  };
+  const [styles] = useSpring(() => ({
+    loop: { reverse: true },
+    from: { x: -100 },
+    to: { x: 100 },
+    config: {
+      easing: [easings.easeInElastic, easings.easeOutElastic],
+      velocity: 0.005,
+      friction: 120,
+      tension: 280,
+    },
+  }));
 
   return (
     <>
@@ -55,12 +74,15 @@ const MakeWish = ({ onNext, fromName, toName }: MakeWishProps) => {
         {over150Char && <Span>{LIMIT_MSG}</Span>}
       </StyledMiddle>
       <StyledBottom>
+        <animated.div style={{ ...styles }}>
+          <img src={Myojeong} alt="myojeong" style={{ height: "10rem" }} />
+        </animated.div>
         <Button
           disabled={!hasWishContent}
           text="소원 주문하기"
           type="primary"
           color="BROWN"
-          onClick={() => onNext(wishContent, isOpen)}
+          onClick={onClickMakeWishButton}
         />
       </StyledBottom>
       <StyledBlurredMoon />

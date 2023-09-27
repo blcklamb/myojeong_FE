@@ -72,7 +72,7 @@ const StyledDalnara = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 3rem;
   position: relative;
 `;
 
@@ -82,6 +82,7 @@ const StyledTopWrapper = styled.div`
   background-color: ${COLORS.BLACK};
   position: sticky;
   top: 0;
+  z-index: 1;
 `;
 
 const StyledTopButtonWrapper = styled.div`

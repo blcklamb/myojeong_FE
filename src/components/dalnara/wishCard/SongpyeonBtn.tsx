@@ -27,10 +27,6 @@ const StyledSongpyeon = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-
-  &:not(:last-child) {
-    border-right: 0.15rem solid black;
-  }
 `;
 
 const StyledSongpyeonImg = styled.img`

@@ -95,17 +95,29 @@ const Story = () => {
               onSkip={() => setStep("NAME-FROM")}
             />
           )}
-          {item === "NAME-FROM" && <NameFrom onNext={onNextNameFrom} />}
-          {item === "TYPE-TO" && <TypeTo onNext={onNextTypeTo} />}
+          {item === "NAME-FROM" && (
+            <StyledPadding5>
+              <NameFrom onNext={onNextNameFrom} />
+            </StyledPadding5>
+          )}
+          {item === "TYPE-TO" && (
+            <StyledPadding5>
+              <TypeTo onNext={onNextTypeTo} />
+            </StyledPadding5>
+          )}
           {item === "NAME-TO" && (
-            <NameTo onNext={onNextNameTo} toType={storyData.toType} />
+            <StyledPadding5>
+              <NameTo onNext={onNextNameTo} toType={storyData.toType} />
+            </StyledPadding5>
           )}
           {item === "MAKE-WISH" && (
-            <MakeWish
-              onNext={onNextMakeWish}
-              fromName={storyData.fromName}
-              toName={storyData.toName}
-            />
+            <StyledPadding5>
+              <MakeWish
+                onNext={onNextMakeWish}
+                fromName={storyData.fromName}
+                toName={storyData.toName}
+              />
+            </StyledPadding5>
           )}
         </animated.div>
       ))}
@@ -118,4 +130,9 @@ export default Story;
 const StyledLayout = styled.div`
   width: 100%;
   height: 84.4rem;
+  padding-top: 5rem;
+`;
+const StyledPadding5 = styled.div`
+  padding-top: 5rem;
+  /* height: 100% */
 `;

@@ -40,7 +40,6 @@ const StyledWrapper = styled.div`
 const StyledTop = styled.div`
   display: flex;
   justify-content: end;
-  margin-top: 6.4rem;
 `;
 
 export const StyledHiddenLayout = styled.div`

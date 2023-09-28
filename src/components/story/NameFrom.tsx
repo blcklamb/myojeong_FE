@@ -50,9 +50,7 @@ const NameFrom = ({ onNext }: NameFromProps) => {
 
 export default NameFrom;
 
-const StyledTop = styled.div`
-  margin-top: 14.4rem;
-`;
+const StyledTop = styled.div``;
 
 const StyledMiddle = styled.div`
   margin-top: 5.4rem;

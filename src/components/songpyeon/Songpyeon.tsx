@@ -73,7 +73,7 @@ const Songpyeon = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <StyledTop>
         {isRightAfterPOST && (
           <Paragraph>
@@ -134,14 +134,14 @@ const Songpyeon = () => {
         />
         <CreditLink hasGithubIcon />
       </StyledBottom>
-    </div>
+    </>
   );
 };
 
 export default Songpyeon;
 
 const StyledTop = styled.div`
-  margin-top: 7.8rem;
+  margin-top: 5rem;
 `;
 
 const StyledSongpyeon = styled.div`
@@ -168,7 +168,7 @@ const StyledEmoji = styled.span`
 `;
 
 const StyledPreview = styled.div`
-  padding-bottom: 1.2rem;
+  padding-bottom: 2.4rem;
 `;
 
 const StyledMiddle = styled.div`

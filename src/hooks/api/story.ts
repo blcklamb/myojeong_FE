@@ -37,9 +37,15 @@ const usePOSTWish = () => {
     },
     onSuccess: (data) => {
       queryClient.setQueryData(["wish", data.id], data);
-      navigate(`/songpyeon?wishId=${data.id}`, {
-        state: { rightAfterPost: true },
-      });
+      if (data.password) {
+        navigate(`/songpyeon?wishId=${data.id}&pw=${data.password}`, {
+          state: { rightAfterPost: true, hasPassword: true },
+        });
+      } else {
+        navigate(`/songpyeon?wishId=${data.id}`, {
+          state: { rightAfterPost: true, hasPassword: false },
+        });
+      }
     },
   });
 };

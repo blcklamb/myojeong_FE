@@ -28,4 +28,5 @@ export type IconName =
   | "share"
   | "navigation"
   | "instagram"
-  | "copy";
+  | "copy"
+  | "github";

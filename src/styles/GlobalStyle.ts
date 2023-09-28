@@ -44,6 +44,9 @@ const GlobalStyle = styled.createGlobalStyle`
     font-family: "jeong", sans-serif;
     font-size: 1em;
     line-height: 1.5;
+    ::placeholder {
+      color: ${COLORS.BLACK};
+    }
   }
 
   a {

@@ -49,6 +49,69 @@
     />
     <title>묘정송편</title>
   </head>
+  <script type="text/javascript" charset="UTF-8">
+    var inAppDeny = (callback) => {
+      if (document.readyState !== "loading") {
+        callback();
+      } else {
+        document.addEventListener("DOMContentLoaded", callback);
+      }
+    };
+    inAppDeny(() => {
+      /* Do things after DOM has fully loaded */
+      async function copyToClipboard(val) {
+        try {
+          await navigator.clipboard.writeText(val);
+          alert("URL 복사를 성공했어요.");
+        } catch (err) {
+          alert(
+            "URL 복사를 실패했어요. 직접 복사해서 다른 브라우저가 열리면 주소창을 길게 터치한 뒤, '붙여놓기 및 이동'를 누르면 정상적으로 이용하실 수 있어요."
+          );
+        }
+      }
+      function inAppBrowserOut() {
+        copyToClipboard(window.location.href);
+        location.href = "x-web-search://?";
+      }
+      var userAgent = navigator.userAgent.toLowerCase();
+      var target_url = location.href;
+
+      if (userAgent.match(/kakaotalk/i)) {
+        //카카오톡 외부브라우저로 호출
+        location.href =
+          "kakaotalk://web/openExternal?url=" + encodeURIComponent(target_url);
+      } else if (userAgent.match(/line/i)) {
+        //라인 외부브라우저로 호출
+        if (target_url.indexOf("?") !== -1) {
+          location.href = target_url + "&openExternalBrowser=1";
+        } else {
+          location.href = target_url + "?openExternalBrowser=1";
+        }
+      } else if (
+        userAgent.match(
+          /inapp|naver|snapchat|wirtschaftswoche|thunderbird|instagram|everytimeapp|whatsApp|electron|wadiz|aliapp|zumapp|iphone(.*)whale|android(.*)whale|kakaostory|band|twitter|DaumApps|DaumDevice\/mobile|FB_IAB|FB4A|FBAN|FBIOS|FBSS|trill|SamsungBrowser\/[^1]/i
+        )
+      ) {
+        //그외 다른 인앱들
+        if (userAgent.match(/iphone|ipad|ipod/i)) {
+          //아이폰은 강제로 사파리를 실행할 수 없다
+          //모바일대응뷰포트강제설정
+          var mobile = document.createElement("meta");
+          mobile.name = "viewport";
+          mobile.content =
+            "width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui";
+          document.getElementsByTagName("head")[0].appendChild(mobile);
+        } else {
+          //안드로이드는 Chrome이 설치되어있음으로 강제로 스킴실행한다.
+          location.href =
+            "intent://" +
+            target_url.replace(/https?:\/\//i, "") +
+            "#Intent;scheme=http;package=com.android.chrome;end";
+        }
+      }
+    });
+  </script>
+
   <body>
     <div id="root"></div>
   </body>

@@ -19,7 +19,9 @@ function App() {
         <Routes>
           <Route path="story" Component={Story} />
           <Route path="songpyeon" Component={Songpyeon}>
-            <Route path=":wishId" />
+            <Route path=":wishId">
+              <Route path=":pw" />
+            </Route>
           </Route>
           <Route path="dalnara" Component={Dalnara} />
           <Route path="" Component={Start} />

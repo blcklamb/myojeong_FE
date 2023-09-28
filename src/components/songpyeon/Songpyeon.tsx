@@ -9,17 +9,27 @@ import Icon from "components/Icon";
 import { useEffect, useMemo, useRef } from "react";
 import { toPng } from "html-to-image";
 import CreditLink from "components/start/CreditLink";
+import Span from "components/story/Span";
 
 const Songpyeon = () => {
   const [searchParams] = useSearchParams();
 
   const navigate = useNavigate();
-  const { state: routerLocation } = useLocation();
+  const { state } = useLocation();
+  const rightAfterPost = useMemo(
+    () => (state ? state.rightAfterPost : false),
+    [state]
+  );
+  const hasPassword = useMemo(
+    () => (state ? state.hasPassword : !!searchParams.get("pw")),
+    [state]
+  );
 
   const songpyeonPreviewRef = useRef<HTMLDivElement>(null);
 
-  const { data, refetch } = useGETWish({
+  const { data, refetch, isError } = useGETWish({
     id: parseInt(searchParams.get("wishId") as string),
+    password: hasPassword ? (searchParams.get("pw") as string) : undefined,
   });
 
   const onClickSongpyeonToPNG = async () => {
@@ -66,14 +76,27 @@ const Songpyeon = () => {
       data ? (data.is_myself ? data.from_name : data.to_name) : "송편주인",
     [data]
   );
-  const isRightAfterPOST = useMemo(() => !!routerLocation, []);
+  const isRightAfterPOST = useMemo(() => !!rightAfterPost, []);
 
   useEffect(() => {
-    refetch();
-  }, []);
+    if (isError) {
+      alert("비공개 소원이에요. 공유받은 링크로만 볼 수 있어요.");
+      navigate("/");
+    }
+  }, [isError]);
+
+  useEffect(() => {
+    if (!hasPassword && data) {
+      navigate(
+        `/songpyeon?wishId=${parseInt(searchParams.get("wishId") as string)}`
+      );
+    } else {
+      refetch();
+    }
+  }, [data]);
 
   return (
-    <div>
+    <>
       <StyledTop>
         {isRightAfterPOST && (
           <Paragraph>
@@ -102,6 +125,13 @@ const Songpyeon = () => {
         </StyledMiddle>
       </StyledPreview>
       <StyledBottom>
+        {hasPassword && isRightAfterPOST && (
+          <StyledSecretMessage>
+            {`비공개 소원은 현재 링크로만 접근 가능해오.`}
+            <br />
+            {`꼭 소원을 저장하거나 링크를 복사해주새오.`}
+          </StyledSecretMessage>
+        )}
         {isRightAfterPOST && (
           <StyledBottomUpper>
             <Button
@@ -134,14 +164,14 @@ const Songpyeon = () => {
         />
         <CreditLink hasGithubIcon />
       </StyledBottom>
-    </div>
+    </>
   );
 };
 
 export default Songpyeon;
 
 const StyledTop = styled.div`
-  margin-top: 7.8rem;
+  margin-top: 5rem;
 `;
 
 const StyledSongpyeon = styled.div`
@@ -168,7 +198,7 @@ const StyledEmoji = styled.span`
 `;
 
 const StyledPreview = styled.div`
-  padding-bottom: 1.2rem;
+  padding-bottom: 2.4rem;
 `;
 
 const StyledMiddle = styled.div`
@@ -194,7 +224,7 @@ const StyledP = styled.p`
 `;
 
 const StyledBottom = styled.div`
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -210,4 +240,9 @@ const StyledCircleButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const StyledSecretMessage = styled.span`
+  color: ${COLORS.GREY};
+  font-size: 1.6rem;
 `;

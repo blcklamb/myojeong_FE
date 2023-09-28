@@ -42,7 +42,6 @@ const StyledWrapper = styled.div`
 const StyledTop = styled.div`
   display: flex;
   justify-content: end;
-  margin-top: 6.4rem;
 `;
 
 const StyledMiddle = styled.div`

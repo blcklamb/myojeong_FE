@@ -92,9 +92,7 @@ const MakeWish = ({ onNext, fromName, toName }: MakeWishProps) => {
 
 export default MakeWish;
 
-const StyledTop = styled.div`
-  margin-top: 12.4rem;
-`;
+const StyledTop = styled.div``;
 
 const StyledMiddle = styled.div`
   margin-top: 2rem;

@@ -15,7 +15,7 @@ export interface IWishList {
 const Wish = ({ from_name, content, sp1, sp2, sp3, id }: IWishList) => {
   const onCopyClipBoard = async () => {
     try {
-      await navigator.clipboard.writeText(`${window.location.host}/songpyeon?wishId=11`);
+      await navigator.clipboard.writeText(`${window.location.host}/songpyeon?wishId=${id}`);
       alert("클립보드에 링크가 복사되었어오!");
     } catch (err) {
       console.log(err);

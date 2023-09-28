@@ -5,7 +5,8 @@ const SongpyeonBtn = ({ songpyeonType, count, id }: { songpyeonType: string; cou
   const { mutate } = usePOSTLike();
 
   const vibrate = () => navigator.vibrate && navigator.vibrate(100);
-  const onSpClick = () => {
+  const onSpClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     vibrate();
     const sptype = `sp${Number(songpyeonType.at(-1)) - 1}`;
     mutate({

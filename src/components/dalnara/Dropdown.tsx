@@ -25,14 +25,16 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
   return (
     <StyledDropdownContainer>
       <StyledDropdownButton onClick={toggleDropdown}>
-        {selectedOption || (
-          <>
-            <StyledNaviWrapper>
-              <Icon name="navigation" height={20} width={20} />
-              <StyledSpan>정렬</StyledSpan>
-            </StyledNaviWrapper>
-          </>
-        )}
+        <StyledSpan>
+          {selectedOption || (
+            <>
+              <StyledNaviWrapper>
+                <Icon name="navigation" height={20} width={20} />
+                정렬
+              </StyledNaviWrapper>
+            </>
+          )}
+        </StyledSpan>
       </StyledDropdownButton>
       {isOpen && (
         <StyledDropdownList>

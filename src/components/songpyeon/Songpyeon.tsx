@@ -6,8 +6,9 @@ import centerSP from "assets/sp7 1.png";
 import { COLORS } from "styles/color";
 import Button from "components/story/Button";
 import Icon from "components/Icon";
-import { ReactNode, useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { toPng } from "html-to-image";
+import CreditLink from "components/start/CreditLink";
 
 const Songpyeon = () => {
   const [searchParams] = useSearchParams();
@@ -131,6 +132,7 @@ const Songpyeon = () => {
           text="달나라 가기"
           onClick={() => navigate("/dalnara")}
         />
+        <CreditLink hasGithubIcon />
       </StyledBottom>
     </div>
   );
@@ -166,7 +168,7 @@ const StyledEmoji = styled.span`
 `;
 
 const StyledPreview = styled.div`
-  padding-bottom: 3.6rem;
+  padding-bottom: 1.2rem;
 `;
 
 const StyledMiddle = styled.div`
@@ -192,6 +194,7 @@ const StyledP = styled.p`
 `;
 
 const StyledBottom = styled.div`
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;

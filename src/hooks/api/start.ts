@@ -5,7 +5,7 @@ import client from "./client";
 
 /**
  * @interface GETWishCountResponse
- * 단일 소원 GET API 요청 Response
+ * 소원 갯수 GET API 요청 Response
  */
 interface GETWishCountResponse {
   count: number;

@@ -8,15 +8,17 @@ import { useGetInfiniteWishList, wishListItem } from "hooks/api/dalnara";
 import useIntersection from "hooks/useIntersection";
 import { useNavigate } from "react-router-dom";
 import { COLORS } from "styles/color";
+import CreditLink from "components/start/CreditLink";
 
 const Dalnara = () => {
   const [inputValue, setInputValue] = useState("");
   const [sortType, setSortType] = useState("recent");
   const navigate = useNavigate();
-  const { data, fetchNextPage, hasNextPage, isFetching, refetch } = useGetInfiniteWishList({
-    sorted: sortType,
-    keyword: inputValue,
-  });
+  const { data, fetchNextPage, hasNextPage, isFetching, refetch } =
+    useGetInfiniteWishList({
+      sorted: sortType,
+      keyword: inputValue,
+    });
 
   const ref = useIntersection((entry, observer) => {
     observer.unobserve(entry.target);
@@ -38,10 +40,20 @@ const Dalnara = () => {
     <StyledDalnara>
       <StyledTopWrapper>
         <StyledTopButtonWrapper>
-          <TopButton text="소원주문하러가기" onClick={() => navigate("/story")} />
+          <CreditLink />
+
+          <TopButton
+            text="소원주문하러가기"
+            onClick={() => navigate("/story")}
+          />
         </StyledTopButtonWrapper>
         <StyledInputWrapper>
-          <Input value={inputValue} height={4.8} placeholder="소원작성자 검색" onChangeInput={handleInputChange} />
+          <Input
+            value={inputValue}
+            height={4.8}
+            placeholder="소원작성자 검색"
+            onChangeInput={handleInputChange}
+          />
           <Dropdown options={["최신", "좋아요"]} onSelect={onChangeSortType} />
         </StyledInputWrapper>
       </StyledTopWrapper>
@@ -86,10 +98,11 @@ const StyledTopWrapper = styled.div`
 `;
 
 const StyledTopButtonWrapper = styled.div`
-  width: 32rem;
+  /* width: 32rem; */
   margin-top: 3rem;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const StyledInputWrapper = styled.div`

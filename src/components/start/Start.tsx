@@ -6,21 +6,12 @@ import FullMoon from "assets/start/FullMoon.png";
 import BorderMoon from "assets/start/BorderMoon.png";
 import Myojeong from "assets/myojeong.png";
 import { useGETWishCount } from "hooks/api/start";
-import { useSpring } from "react-spring";
-import { useMemo, useRef } from "react";
 import Span from "components/story/Span";
+import CreditLink from "./CreditLink";
 
 const Start = () => {
   const navigate = useNavigate();
   const { data: wishCount } = useGETWishCount();
-
-  const moonRef = useRef<HTMLDivElement>(null);
-  const moonWidth = useMemo<number>(() => {
-    return moonRef.current ? moonRef.current.offsetWidth : 0;
-  }, [moonRef]);
-  console.log(moonWidth);
-
-  const props = useSpring({ width: wishCount ? (wishCount / 500) * 100 : 0 });
 
   return (
     <>
@@ -29,10 +20,7 @@ const Start = () => {
         <StyledH1>묘정 송편</StyledH1>
       </StyledTop>
       <StyledMiddle>
-        <div
-          ref={moonRef}
-          style={{ position: "relative", width: "100%", height: "24rem" }}
-        >
+        <div style={{ position: "relative", width: "100%", height: "24rem" }}>
           <img
             style={{
               position: "absolute",
@@ -53,9 +41,6 @@ const Start = () => {
               left: "50%",
               translate: "-50% -40%",
               zIndex: 2,
-
-              // width: "100%",
-              // height: "100%",
             }}
             className="floating-img"
             src={BorderMoon}
@@ -89,6 +74,7 @@ const Start = () => {
           type="primary"
           color="DARK_BROWN"
         ></Button>
+        <CreditLink />
       </StyledBottom>
     </>
   );

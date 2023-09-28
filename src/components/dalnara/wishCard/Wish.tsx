@@ -2,6 +2,7 @@ import styled from "styled-components";
 import SongpyeonBtn from "./SongpyeonBtn";
 import { COLORS } from "styles/color";
 import Icon from "components/Icon";
+import { useNavigate } from "react-router-dom";
 
 export interface IWishList {
   id: number;
@@ -13,7 +14,10 @@ export interface IWishList {
 }
 
 const Wish = ({ from_name, content, sp1, sp2, sp3, id }: IWishList) => {
-  const onCopyClipBoard = async () => {
+  const navigate = useNavigate();
+
+  const onCopyClipBoard = async (e: React.MouseEvent) => {
+    e.stopPropagation();
     try {
       await navigator.clipboard.writeText(`${window.location.host}/songpyeon?wishId=${id}`);
       alert("링크가 복사되었어요.");
@@ -24,7 +28,7 @@ const Wish = ({ from_name, content, sp1, sp2, sp3, id }: IWishList) => {
 
   return (
     <>
-      <StyledWish>
+      <StyledWish onClick={() => navigate(`/songpyeon?wishId=${id}`)}>
         <StyledHeader>
           <div onClick={onCopyClipBoard}>
             <Icon name="share" width={24} height={24} />

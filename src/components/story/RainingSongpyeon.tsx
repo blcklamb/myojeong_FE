@@ -3,7 +3,7 @@ import { useSpring } from "react-spring";
 import { styled } from "styled-components";
 import nextSP from "assets/sp1 1.png";
 
-const RainingMyojeong = () => {
+const RainingSongpyeon = () => {
   const [styles] = useSpring(() => ({
     loop: true,
     from: { y: -400 },
@@ -38,7 +38,7 @@ const RainingMyojeong = () => {
   );
 };
 
-export default RainingMyojeong;
+export default RainingSongpyeon;
 const StyledSongpyeonImg = styled.img`
   width: 3.1rem;
   height: auto;

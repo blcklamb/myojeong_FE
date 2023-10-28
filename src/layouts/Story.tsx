@@ -8,6 +8,7 @@ import TypeTo from "components/story/TypeTo";
 import { styled } from "styled-components";
 import { usePOSTWish } from "hooks/api/story";
 import { useTransition, animated } from "react-spring";
+import { useNavigate } from "react-router-dom";
 
 type TStep =
   | "INTRO"
@@ -44,31 +45,32 @@ const Story = () => {
     exitBeforeEnter: true,
   });
 
-  const onNextNameFrom = (name: string) => {
+  const onNextNameFrom = (작성자_이름: string) => {
     setStoryData((prev) => {
-      return { ...prev, fromName: name };
+      return { ...prev, fromName: 작성자_이름 };
     });
     setStep("TYPE-TO");
   };
-  const onNextTypeTo = (type: string) => {
-    if (type === "나") {
+  const onNextTypeTo = (송편주인_타입: string) => {
+    if (송편주인_타입 === "나") {
       setStoryData((prev) => {
-        return { ...prev, toName: "", toType: type };
+        return { ...prev, toName: "", toType: 송편주인_타입 };
       });
       setStep("MAKE-WISH");
     } else {
       setStoryData((prev) => {
-        return { ...prev, toType: type };
+        return { ...prev, toType: 송편주인_타입 };
       });
       setStep("NAME-TO");
     }
   };
-  const onNextNameTo = (name: string) => {
+  const onNextNameTo = (송편주인_이름: string) => {
     setStoryData((prev) => {
-      return { ...prev, toName: name };
+      return { ...prev, toName: 송편주인_이름 };
     });
     setStep("MAKE-WISH");
   };
+
   const onNextMakeWish = (content: string, isOpen: boolean) => {
     const { fromName, toName } = storyData;
     mutate({

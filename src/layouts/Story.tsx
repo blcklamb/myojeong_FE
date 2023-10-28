@@ -7,10 +7,10 @@ import Turn from "components/story/Turn";
 import TypeTo from "components/story/TypeTo";
 import { styled } from "styled-components";
 import { usePOSTWish } from "hooks/api/story";
-import { useTransition, animated } from "react-spring";
-import { useNavigate } from "react-router-dom";
+import { animated } from "react-spring";
+import useReactSpring from "hooks/useReactSpring";
 
-type TStep =
+export type TStep =
   | "INTRO"
   | "TURN"
   | "NAME-FROM"
@@ -38,12 +38,8 @@ const Story = () => {
 
   const { mutate } = usePOSTWish();
 
-  const transitions = useTransition(step, {
-    from: { opacity: 0, transform: "translate3d(1000vw, 0, 0)" },
-    enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
-    leave: { opacity: 0, transform: "translate3d(-20vw, 0, 0)" },
-    exitBeforeEnter: true,
-  });
+  const { useFunnelTransition } = useReactSpring;
+  const pageTransition = useFunnelTransition(step);
 
   const onNextNameFrom = (작성자_이름: string) => {
     setStoryData((prev) => {
@@ -83,7 +79,7 @@ const Story = () => {
 
   return (
     <StyledLayout>
-      {transitions((props, item) => (
+      {pageTransition((props, item) => (
         <animated.div style={props}>
           {item === "INTRO" && (
             <Intro

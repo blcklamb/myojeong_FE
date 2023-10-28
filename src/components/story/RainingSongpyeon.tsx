@@ -1,21 +1,11 @@
-import { animated, easings } from "@react-spring/web";
-import { useSpring } from "react-spring";
+import { animated } from "@react-spring/web";
 import { styled } from "styled-components";
 import nextSP from "assets/sp1 1.png";
+import useReactSpring from "hooks/useReactSpring";
 
 const RainingSongpyeon = () => {
-  const [styles] = useSpring(() => ({
-    loop: true,
-    from: { y: -400 },
-    to: { y: 100 },
-    delay: 500,
-    config: {
-      easing: easings.easeInBack,
-      velocity: 0.005,
-      friction: 60,
-      tension: 280,
-    },
-  }));
+  const { useRaining } = useReactSpring;
+  const [styles] = useRaining();
 
   return (
     <>

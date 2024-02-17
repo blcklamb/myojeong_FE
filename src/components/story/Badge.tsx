@@ -1,6 +1,18 @@
 import styled from "styled-components";
 
 type TBadge = 1 | 2 | 3 | 4;
+type newTBadge = "SELF" | "FAMILY" | "FRIEND" | "CUSTOM";
+type OBJBadge = {
+  [key in newTBadge]: string;
+};
+
+const BADGE_TYPE_: OBJBadge = {
+  SELF: "나",
+  FAMILY: "가족",
+  FRIEND: "친구",
+  CUSTOM: "직접 입력",
+};
+
 interface BadgeProps {
   badgeType: TBadge;
   type: string;

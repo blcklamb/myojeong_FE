@@ -1,17 +1,27 @@
 import styled from "styled-components";
 
-type TBadge = 1 | 2 | 3 | 4;
+type TBadge = "SELF" | "FAMILY" | "FRIEND" | "CUSTOM";
+type OBJBadge = {
+  [key in TBadge]: string;
+};
+
+const BADGE_TYPE: OBJBadge = {
+  SELF: "나",
+  FAMILY: "가족",
+  FRIEND: "친구",
+  CUSTOM: "직접 입력",
+};
+
 interface BadgeProps {
-  badgeType: TBadge;
-  type: string;
+  type: TBadge;
   onClick: () => void;
 }
 
-const Badge = ({ badgeType, type, onClick }: BadgeProps) => {
+const Badge = ({ type, onClick }: BadgeProps) => {
   return (
-    <StyledBadge badgetype={badgeType} onClick={onClick}>
-      <StyledDot badgetype={badgeType} />
-      {type}
+    <StyledBadge badgetype={type} onClick={onClick}>
+      <StyledDot badgetype={type} />
+      {BADGE_TYPE[type]}
     </StyledBadge>
   );
 };
@@ -19,9 +29,24 @@ const Badge = ({ badgeType, type, onClick }: BadgeProps) => {
 export default Badge;
 
 const BadgeColor = {
-  background: { 1: "#F9F5FF", 2: "#FEF3F2", 3: "#FFFAEB", 4: "#ECFDF3" },
-  span: { 1: "#9E77ED", 2: "#F04438", 3: "#F79009", 4: "#12B76A" },
-  font: { 1: "#6941C6", 2: "#B42318", 3: "#B54708", 4: "#027A48" },
+  background: {
+    SELF: "#F9F5FF",
+    FAMILY: "#FEF3F2",
+    FRIEND: "#FFFAEB",
+    CUSTOM: "#ECFDF3",
+  },
+  span: {
+    SELF: "#9E77ED",
+    FAMILY: "#F04438",
+    FRIEND: "#F79009",
+    CUSTOM: "#12B76A",
+  },
+  font: {
+    SELF: "#6941C6",
+    FAMILY: "#B42318",
+    FRIEND: "#B54708",
+    CUSTOM: "#027A48",
+  },
 };
 
 const StyledBadge = styled.button.withConfig({

@@ -21,7 +21,7 @@ const TypeTo = ({ onNext }: TypeToProps) => {
   const onClickNextSPButton = () => {
     if (isValidName(type)) onNext(type);
     // TODO: toast 처리
-    else alert("유형은 0자 이상 6자 이하애오");
+    else alert("유형은 1자 이상 6자 이하애오");
   };
 
   return (
@@ -34,10 +34,10 @@ const TypeTo = ({ onNext }: TypeToProps) => {
       </StyledTop>
       <StyledMiddle>
         <StyledBadgeGroup>
-          <Badge badgeType={1} type="나" onClick={() => setType("나")} />
-          <Badge badgeType={2} type="가족" onClick={() => setType("가족")} />
-          <Badge badgeType={3} type="친구" onClick={() => setType("친구")} />
-          <Badge badgeType={4} type="직접 입력" onClick={() => setType("")} />
+          <Badge type="SELF" onClick={() => setType("나")} />
+          <Badge type="FAMILY" onClick={() => setType("가족")} />
+          <Badge type="FRIEND" onClick={() => setType("친구")} />
+          <Badge type="CUSTOM" onClick={() => setType("")} />
         </StyledBadgeGroup>
         <Input
           value={type}

@@ -10,6 +10,12 @@ import { useNavigate } from "react-router-dom";
 import { COLORS } from "styles/color";
 import CreditLink from "components/start/CreditLink";
 
+type TDropDownOption = "recent" | "songpyeon";
+const OPTION_MAP: { [key: string]: TDropDownOption } = {
+  최신: "recent",
+  좋아요: "songpyeon",
+};
+
 const Dalnara = () => {
   const [inputValue, setInputValue] = useState("");
   const [sortType, setSortType] = useState("recent");
@@ -32,8 +38,8 @@ const Dalnara = () => {
     }, 100);
   };
 
-  const onChangeSortType = (option: string) => {
-    setSortType(option === "최신" ? "recent" : "songpyeon");
+  const onChangeSortType = (option: TDropDownOption) => {
+    setSortType(option);
   };
 
   return (
@@ -54,7 +60,13 @@ const Dalnara = () => {
             placeholder="소원작성자 검색"
             onChangeInput={handleInputChange}
           />
-          <Dropdown options={["최신", "좋아요"]} onSelect={onChangeSortType} />
+          <Dropdown
+            options={["최신", "좋아요"]}
+            onSelect={(option) => {
+              const payLoadOption = OPTION_MAP[option];
+              onChangeSortType(payLoadOption);
+            }}
+          />
         </S_InputWrapper>
       </S_TopWrapper>
 

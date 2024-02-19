@@ -19,7 +19,9 @@ const Wish = ({ from_name, content, sp1, sp2, sp3, id }: IWishList) => {
   const onCopyClipBoard = async (e: React.MouseEvent) => {
     e.stopPropagation();
     try {
-      await navigator.clipboard.writeText(`${window.location.host}/songpyeon?wishId=${id}`);
+      await navigator.clipboard.writeText(
+        `${window.location.host}/songpyeon?wishId=${id}`
+      );
       alert("링크가 복사되었어요.");
     } catch (err) {
       alert("링크 복사 중 오류가 발생했어요. 다시 시도해주세요.");
@@ -39,9 +41,9 @@ const Wish = ({ from_name, content, sp1, sp2, sp3, id }: IWishList) => {
           <S_Wisher>- {from_name}</S_Wisher>
         </S_Body>
         <S_Footer>
-          <SongpyeonBtn songpyeonType="sp2" count={sp1} id={id} />
-          <SongpyeonBtn songpyeonType="sp3" count={sp2} id={id} />
-          <SongpyeonBtn songpyeonType="sp4" count={sp3} id={id} />
+          <SongpyeonBtn songpyeonType="sp1" count={sp1} id={id} />
+          <SongpyeonBtn songpyeonType="sp2" count={sp2} id={id} />
+          <SongpyeonBtn songpyeonType="sp3" count={sp3} id={id} />
         </S_Footer>
       </S_Wish>
     </>

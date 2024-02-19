@@ -1,23 +1,40 @@
 import { usePOSTLike } from "hooks/api/dalnara";
 import styled from "styled-components";
+import sp1 from "assets/sp1.png";
+import sp2 from "assets/sp2.png";
+import sp3 from "assets/sp3.png";
 
-const SongpyeonBtn = ({ songpyeonType, count, id }: { songpyeonType: string; count: number; id: number }) => {
+type TSongpyeonType = "sp1" | "sp2" | "sp3";
+type OBJSongpyeon = { [key in TSongpyeonType]: string };
+
+const IMAGE_MAP: OBJSongpyeon = {
+  sp1,
+  sp2,
+  sp3,
+};
+
+interface ISongpyeonBtnProps {
+  songpyeonType: TSongpyeonType;
+  count: number;
+  id: number;
+}
+
+const SongpyeonBtn = ({ songpyeonType, count, id }: ISongpyeonBtnProps) => {
   const { mutate } = usePOSTLike();
 
   const vibrate = () => navigator.vibrate && navigator.vibrate(100);
   const onSpClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     vibrate();
-    const sptype = `sp${Number(songpyeonType.at(-1)) - 1}`;
     mutate({
       id,
-      type: sptype,
+      type: songpyeonType,
     });
   };
-
+  const imageSrc = IMAGE_MAP[songpyeonType];
   return (
     <S_Songpyeon onClick={onSpClick}>
-      <S_SongpyeonImg src={require(`../../../assets/${songpyeonType}.png`)} />
+      <S_SongpyeonImg src={imageSrc} />
       <S_Count>{count}</S_Count>
     </S_Songpyeon>
   );

@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 import Paragraph from "./Paragraph";
 import Span from "./Span";
 import Button from "./Button";
-import { animated, easings, useSpring } from "react-spring";
+import { animated } from "react-spring";
 import Myojeong from "assets/myojeong.png";
 import { isValidWish } from "utils/validation";
 import useReactSpring from "hooks/useReactSpring";

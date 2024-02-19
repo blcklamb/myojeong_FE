@@ -21,7 +21,7 @@ const NameTo = ({ onNext, toType }: NameToProps) => {
   const onClickNextSPButton = () => {
     if (isValidName(name)) onNext(name);
     // TODO: toast 처리
-    else alert("이름은 0자 이상 6자 이하애오");
+    else alert("이름은 1자 이상 6자 이하애오");
   };
 
   return (

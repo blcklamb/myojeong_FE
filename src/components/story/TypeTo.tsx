@@ -21,7 +21,7 @@ const TypeTo = ({ onNext }: TypeToProps) => {
   const onClickNextSPButton = () => {
     if (isValidName(type)) onNext(type);
     // TODO: toast 처리
-    else alert("유형은 0자 이상 6자 이하애오");
+    else alert("유형은 1자 이상 6자 이하애오");
   };
 
   return (

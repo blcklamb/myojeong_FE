@@ -25,13 +25,13 @@ const NameFrom = ({ onNext }: NameFromProps) => {
 
   return (
     <>
-      <StyledTop>
+      <S_Top>
         <Paragraph>
           {`당신의
         이름이 뭐애오?`}
         </Paragraph>
-      </StyledTop>
-      <StyledMiddle>
+      </S_Top>
+      <S_Middle>
         <Paragraph align="right">{`내 이름은`}</Paragraph>
         <Input
           value={name}
@@ -40,19 +40,19 @@ const NameFrom = ({ onNext }: NameFromProps) => {
           onChangeInput={onChangeName}
         />
         <Paragraph align="right">{`(이)야`}</Paragraph>
-      </StyledMiddle>
-      <StyledBottom>
+      </S_Middle>
+      <S_Bottom>
         <NextSPButton onClick={onClickNextSPButton} />
-      </StyledBottom>
+      </S_Bottom>
     </>
   );
 };
 
 export default NameFrom;
 
-const StyledTop = styled.div``;
+const S_Top = styled.div``;
 
-const StyledMiddle = styled.div`
+const S_Middle = styled.div`
   margin-top: 5.4rem;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@ const StyledMiddle = styled.div`
   gap: 1rem;
 `;
 
-const StyledBottom = styled.div`
+const S_Bottom = styled.div`
   margin-top: 2.4rem;
   display: flex;
   flex-direction: column;

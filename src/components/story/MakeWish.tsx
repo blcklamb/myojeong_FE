@@ -40,33 +40,33 @@ const MakeWish = ({ onNext, fromName, toName }: MakeWishProps) => {
 
   return (
     <>
-      <StyledTop>
+      <S_Top>
         <Paragraph>
           {`${fromName}의
         소원을 알려주새오.`}
         </Paragraph>
-      </StyledTop>
-      <StyledMiddle>
-        <StyledTextAreaWrapper>
-          <StyledToName>{toName.length > 0 ? toName : "나"}에게</StyledToName>
-          <StyledTextArea
+      </S_Top>
+      <S_Middle>
+        <S_TextAreaWrapper>
+          <S_ToName>{toName.length > 0 ? toName : "나"}에게</S_ToName>
+          <S_TextArea
             placeholder="예시) 우산 깜박하고 안 챙긴 날에 비 안 오게 해주세요!"
             value={wishContent}
             onChange={onChangeTextArea}
           />
-        </StyledTextAreaWrapper>
-        <StyledIsOpenContainer>
+        </S_TextAreaWrapper>
+        <S_IsOpenContainer>
           <Span>모든 사람이 봐도 괜찮을까오?</Span>
-          <StyledCheckbox
+          <S_Checkbox
             aria-label="is-open"
             type="checkbox"
             checked={isOpen}
             onChange={onToggleOpenCheckbox}
           />
-        </StyledIsOpenContainer>
+        </S_IsOpenContainer>
         {over150Char && <Span>{LIMIT_MSG}</Span>}
-      </StyledMiddle>
-      <StyledBottom>
+      </S_Middle>
+      <S_Bottom>
         <animated.div style={{ ...styles }}>
           <img src={Myojeong} alt="myojeong" style={{ height: "10rem" }} />
         </animated.div>
@@ -77,17 +77,17 @@ const MakeWish = ({ onNext, fromName, toName }: MakeWishProps) => {
           color="BROWN"
           onClick={onClickMakeWishButton}
         />
-      </StyledBottom>
-      <StyledBlurredMoon />
+      </S_Bottom>
+      <S_BlurredMoon />
     </>
   );
 };
 
 export default MakeWish;
 
-const StyledTop = styled.div``;
+const S_Top = styled.div``;
 
-const StyledMiddle = styled.div`
+const S_Middle = styled.div`
   margin-top: 2rem;
   width: 100%;
   display: flex;
@@ -96,7 +96,7 @@ const StyledMiddle = styled.div`
   gap: 1rem;
 `;
 
-const StyledTextAreaWrapper = styled.div`
+const S_TextAreaWrapper = styled.div`
   width: 100%;
   height: 21.8rem;
 
@@ -106,12 +106,12 @@ const StyledTextAreaWrapper = styled.div`
   padding: 1.2rem 3.2rem 1.2rem;
 `;
 
-const StyledToName = styled.h2`
+const S_ToName = styled.h2`
   font-size: 2.8rem;
   text-align: left;
 `;
 
-const StyledTextArea = styled.textarea`
+const S_TextArea = styled.textarea`
   width: 100%;
   height: 11.2rem;
   background-color: transparent;
@@ -120,28 +120,28 @@ const StyledTextArea = styled.textarea`
   border: none;
 `;
 
-const StyledIsOpenContainer = styled.div`
+const S_IsOpenContainer = styled.div`
   display: flex;
   align-items: center;
 
   gap: 1.2rem;
 `;
 
-const StyledCheckbox = styled.input`
+const S_Checkbox = styled.input`
   width: 2.4rem;
   height: 2.4rem;
 
   border-radius: 0.5rem;
 `;
 
-const StyledBottom = styled.div`
+const S_Bottom = styled.div`
   margin-top: 2.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const StyledBlurredMoon = styled.span`
+export const S_BlurredMoon = styled.span`
   height: 16.5rem;
   width: 16.5rem;
 

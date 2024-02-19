@@ -23,42 +23,42 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
   };
 
   return (
-    <StyledDropdownContainer>
-      <StyledDropdownButton onClick={toggleDropdown}>
-        <StyledSpan>
+    <S_DropdownContainer>
+      <S_DropdownButton onClick={toggleDropdown}>
+        <S_Span>
           {selectedOption || (
             <>
-              <StyledNaviWrapper>
+              <S_NaviWrapper>
                 <Icon name="navigation" height={20} width={20} />
                 정렬
-              </StyledNaviWrapper>
+              </S_NaviWrapper>
             </>
           )}
-        </StyledSpan>
-      </StyledDropdownButton>
+        </S_Span>
+      </S_DropdownButton>
       {isOpen && (
-        <StyledDropdownList>
+        <S_DropdownList>
           {options.map((option, index) => (
-            <StyledDropdownListItem key={index} onClick={() => handleOptionClick(option)}>
+            <S_DropdownListItem key={index} onClick={() => handleOptionClick(option)}>
               {option}
-            </StyledDropdownListItem>
+            </S_DropdownListItem>
           ))}
-        </StyledDropdownList>
+        </S_DropdownList>
       )}
-    </StyledDropdownContainer>
+    </S_DropdownContainer>
   );
 };
 
 export default Dropdown;
 
-const StyledDropdownContainer = styled.div`
+const S_DropdownContainer = styled.div`
   width: 13rem;
   height: 4.8rem;
   position: relative;
   display: inline-block;
 `;
 
-const StyledDropdownButton = styled.button`
+const S_DropdownButton = styled.button`
   width: 100%;
   height: 100%;
   border: 0.3rem solid ${COLORS.GREEN};
@@ -68,7 +68,7 @@ const StyledDropdownButton = styled.button`
   cursor: pointer;
 `;
 
-const StyledDropdownList = styled.ul`
+const S_DropdownList = styled.ul`
   width: 100%;
   margin-top: 0.5rem;
   border: 0.3rem solid ${COLORS.GREEN};
@@ -79,7 +79,7 @@ const StyledDropdownList = styled.ul`
   overflow: hidden;
 `;
 
-const StyledDropdownListItem = styled.li`
+const S_DropdownListItem = styled.li`
   cursor: pointer;
 
   &:hover {
@@ -91,13 +91,13 @@ const StyledDropdownListItem = styled.li`
   }
 `;
 
-const StyledNaviWrapper = styled.div`
+const S_NaviWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 `;
 
-const StyledSpan = styled.span`
+const S_Span = styled.span`
   color: black;
 `;

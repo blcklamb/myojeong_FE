@@ -8,16 +8,16 @@ interface NextSPButtonProps {
 
 const NextSPButton = ({ onClick }: NextSPButtonProps) => {
   return (
-    <StyledButton onClick={onClick}>
+    <S_Button onClick={onClick}>
       <Span>다음으로</Span>
-      <StyledSongpyeonImg src={nextSP} alt="next-songpyeon" />
-    </StyledButton>
+      <S_SongpyeonImg src={nextSP} alt="next-songpyeon" />
+    </S_Button>
   );
 };
 
 export default NextSPButton;
 
-const StyledButton = styled.button`
+const S_Button = styled.button`
   gap: 0.8rem;
   background-color: transparent;
 
@@ -27,7 +27,7 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-const StyledSongpyeonImg = styled.img`
+const S_SongpyeonImg = styled.img`
   width: 3.1rem;
   height: auto;
 `;

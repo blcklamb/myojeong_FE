@@ -16,16 +16,16 @@ const SongpyeonBtn = ({ songpyeonType, count, id }: { songpyeonType: string; cou
   };
 
   return (
-    <StyledSongpyeon onClick={onSpClick}>
-      <StyledSongpyeonImg src={require(`../../../assets/${songpyeonType}.png`)} />
-      <StyledCount>{count}</StyledCount>
-    </StyledSongpyeon>
+    <S_Songpyeon onClick={onSpClick}>
+      <S_SongpyeonImg src={require(`../../../assets/${songpyeonType}.png`)} />
+      <S_Count>{count}</S_Count>
+    </S_Songpyeon>
   );
 };
 
 export default SongpyeonBtn;
 
-const StyledSongpyeon = styled.div`
+const S_Songpyeon = styled.div`
   padding: 0 0.5rem;
 
   display: flex;
@@ -33,12 +33,12 @@ const StyledSongpyeon = styled.div`
   gap: 0.5rem;
 `;
 
-const StyledSongpyeonImg = styled.img`
+const S_SongpyeonImg = styled.img`
   height: 3.3rem;
   width: 3.6rem;
 `;
 
-const StyledCount = styled.h3`
+const S_Count = styled.h3`
   font-size: 1.6rem;
   margin-left: 0.5rem;
   font-family:

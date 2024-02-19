@@ -26,19 +26,19 @@ const TypeTo = ({ onNext }: TypeToProps) => {
 
   return (
     <>
-      <StyledTop>
+      <S_Top>
         <Paragraph>
           {`누구를 위한
           소원이애오?`}
         </Paragraph>
-      </StyledTop>
-      <StyledMiddle>
-        <StyledBadgeGroup>
+      </S_Top>
+      <S_Middle>
+        <S_BadgeGroup>
           <Badge type="SELF" onClick={() => setType("나")} />
           <Badge type="FAMILY" onClick={() => setType("가족")} />
           <Badge type="FRIEND" onClick={() => setType("친구")} />
           <Badge type="CUSTOM" onClick={() => setType("")} />
-        </StyledBadgeGroup>
+        </S_BadgeGroup>
         <Input
           value={type}
           height={6.4}
@@ -46,19 +46,19 @@ const TypeTo = ({ onNext }: TypeToProps) => {
           onChangeInput={onChangeType}
         />
         <Paragraph align="right">{`(을/를) 위한 소원이야.`}</Paragraph>
-      </StyledMiddle>
-      <StyledBottom>
+      </S_Middle>
+      <S_Bottom>
         <NextSPButton onClick={onClickNextSPButton} />
-      </StyledBottom>
+      </S_Bottom>
     </>
   );
 };
 
 export default TypeTo;
 
-const StyledTop = styled.div``;
+const S_Top = styled.div``;
 
-const StyledMiddle = styled.div`
+const S_Middle = styled.div`
   margin-top: 5.4rem;
   display: flex;
   flex-direction: column;
@@ -66,14 +66,14 @@ const StyledMiddle = styled.div`
   gap: 1rem;
 `;
 
-const StyledBottom = styled.div`
+const S_Bottom = styled.div`
   margin-top: 2.4rem;
   display: flex;
   flex-direction: column;
   align-items: end;
 `;
 
-const StyledBadgeGroup = styled.div`
+const S_BadgeGroup = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;

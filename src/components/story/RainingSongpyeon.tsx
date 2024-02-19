@@ -11,17 +11,17 @@ const RainingSongpyeon = () => {
     <>
       <animated.div style={{ height: "5rem", ...styles }}>
         <div>
-          <StyledSongpyeonImg src={nextSP} alt="next-songpyeon" />
+          <S_SongpyeonImg src={nextSP} alt="next-songpyeon" />
         </div>
         <div>
-          <StyledSongpyeonImg src={nextSP} alt="next-songpyeon" />
-          <StyledSongpyeonImg src={nextSP} alt="next-songpyeon" />
+          <S_SongpyeonImg src={nextSP} alt="next-songpyeon" />
+          <S_SongpyeonImg src={nextSP} alt="next-songpyeon" />
         </div>
         <div>
-          <StyledSongpyeonImg src={nextSP} alt="next-songpyeon" />
+          <S_SongpyeonImg src={nextSP} alt="next-songpyeon" />
 
-          <StyledSongpyeonImg src={nextSP} alt="next-songpyeon" />
-          <StyledSongpyeonImg src={nextSP} alt="next-songpyeon" />
+          <S_SongpyeonImg src={nextSP} alt="next-songpyeon" />
+          <S_SongpyeonImg src={nextSP} alt="next-songpyeon" />
         </div>
       </animated.div>
     </>
@@ -29,7 +29,7 @@ const RainingSongpyeon = () => {
 };
 
 export default RainingSongpyeon;
-const StyledSongpyeonImg = styled.img`
+const S_SongpyeonImg = styled.img`
   width: 3.1rem;
   height: auto;
 `;

@@ -19,10 +19,10 @@ interface BadgeProps {
 
 const Badge = ({ type, onClick }: BadgeProps) => {
   return (
-    <StyledBadge badgetype={type} onClick={onClick}>
-      <StyledDot badgetype={type} />
+    <S_Badge badgetype={type} onClick={onClick}>
+      <S_Dot badgetype={type} />
       {BADGE_TYPE[type]}
-    </StyledBadge>
+    </S_Badge>
   );
 };
 
@@ -49,7 +49,7 @@ const BadgeColor = {
   },
 };
 
-const StyledBadge = styled.button.withConfig({
+const S_Badge = styled.button.withConfig({
   shouldForwardProp: (prop) => !["badgetype"].includes(prop),
 })<{ badgetype: TBadge }>`
   display: inline-flex;
@@ -68,7 +68,7 @@ const StyledBadge = styled.button.withConfig({
   color: ${(props) => BadgeColor.font[props.badgetype]};
 `;
 
-const StyledDot = styled.div.withConfig({
+const S_Dot = styled.div.withConfig({
   shouldForwardProp: (prop) => !["badgetype"].includes(prop),
 })<{ badgetype: TBadge }>`
   background-color: ${(props) => BadgeColor.span[props.badgetype]};

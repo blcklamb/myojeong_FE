@@ -78,7 +78,7 @@ const Story = () => {
   };
 
   return (
-    <StyledLayout>
+    <S_Layout>
       {pageTransition((props, item) => (
         <animated.div style={props}>
           {item === "INTRO" && (
@@ -94,43 +94,43 @@ const Story = () => {
             />
           )}
           {item === "NAME-FROM" && (
-            <StyledPadding5>
+            <S_Padding5>
               <NameFrom onNext={onNextNameFrom} />
-            </StyledPadding5>
+            </S_Padding5>
           )}
           {item === "TYPE-TO" && (
-            <StyledPadding5>
+            <S_Padding5>
               <TypeTo onNext={onNextTypeTo} />
-            </StyledPadding5>
+            </S_Padding5>
           )}
           {item === "NAME-TO" && (
-            <StyledPadding5>
+            <S_Padding5>
               <NameTo onNext={onNextNameTo} toType={storyData.toType} />
-            </StyledPadding5>
+            </S_Padding5>
           )}
           {item === "MAKE-WISH" && (
-            <StyledPadding5>
+            <S_Padding5>
               <MakeWish
                 onNext={onNextMakeWish}
                 fromName={storyData.fromName}
                 toName={storyData.toName}
               />
-            </StyledPadding5>
+            </S_Padding5>
           )}
         </animated.div>
       ))}
-    </StyledLayout>
+    </S_Layout>
   );
 };
 
 export default Story;
 
-const StyledLayout = styled.div`
+const S_Layout = styled.div`
   width: 100%;
   height: 84.4rem;
   padding-top: 5rem;
 `;
-const StyledPadding5 = styled.div`
+const S_Padding5 = styled.div`
   padding-top: 5rem;
   /* height: 100% */
 `;

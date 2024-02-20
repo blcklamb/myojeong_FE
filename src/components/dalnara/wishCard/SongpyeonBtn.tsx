@@ -4,8 +4,8 @@ import sp1 from "assets/sp1.png";
 import sp2 from "assets/sp2.png";
 import sp3 from "assets/sp3.png";
 
-type TSongpyeonType = "sp1" | "sp2" | "sp3";
-type OBJSongpyeon = { [key in TSongpyeonType]: string };
+type TSongpyeon = "sp1" | "sp2" | "sp3";
+type OBJSongpyeon = { [key in TSongpyeon]: string };
 
 const IMAGE_MAP: OBJSongpyeon = {
   sp1,
@@ -14,7 +14,7 @@ const IMAGE_MAP: OBJSongpyeon = {
 };
 
 interface ISongpyeonBtnProps {
-  songpyeonType: TSongpyeonType;
+  songpyeonType: TSongpyeon;
   count: number;
   id: number;
 }

@@ -63,8 +63,7 @@ const Dalnara = () => {
           <Dropdown
             options={["최신", "좋아요"]}
             onSelect={(option) => {
-              const payLoadOption = OPTION_MAP[option];
-              onChangeSortType(payLoadOption);
+              onChangeSortType(OPTION_MAP[option]);
             }}
           />
         </S_InputWrapper>

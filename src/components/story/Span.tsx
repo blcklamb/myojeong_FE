@@ -12,12 +12,12 @@ interface SpanProps {
  * <Span>다음으로</Span>
  */
 const Span = ({ children }: SpanProps) => {
-  return <StyledSpan>{children}</StyledSpan>;
+  return <S_Span>{children}</S_Span>;
 };
 
 export default Span;
 
-const StyledSpan = styled.span`
+const S_Span = styled.span`
   color: ${COLORS.WHITE};
   font-size: 2.4rem;
 `;

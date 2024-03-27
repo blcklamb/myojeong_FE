@@ -9,7 +9,6 @@ import Icon from "components/Icon";
 import { useEffect, useMemo, useRef } from "react";
 import { toPng } from "html-to-image";
 import CreditLink from "components/start/CreditLink";
-import Span from "components/story/Span";
 
 const Songpyeon = () => {
   const [searchParams] = useSearchParams();

@@ -19,7 +19,9 @@ const Wish = ({ from_name, content, sp1, sp2, sp3, id }: IWishList) => {
   const onCopyClipBoard = async (e: React.MouseEvent) => {
     e.stopPropagation();
     try {
-      await navigator.clipboard.writeText(`${window.location.host}/songpyeon?wishId=${id}`);
+      await navigator.clipboard.writeText(
+        `${window.location.host}/songpyeon?wishId=${id}`
+      );
       alert("링크가 복사되었어요.");
     } catch (err) {
       alert("링크 복사 중 오류가 발생했어요. 다시 시도해주세요.");
@@ -28,29 +30,29 @@ const Wish = ({ from_name, content, sp1, sp2, sp3, id }: IWishList) => {
 
   return (
     <>
-      <StyledWish onClick={() => navigate(`/songpyeon?wishId=${id}`)}>
-        <StyledHeader>
+      <S_Wish onClick={() => navigate(`/songpyeon?wishId=${id}`)}>
+        <S_Header>
           <div onClick={onCopyClipBoard}>
             <Icon name="share" width={24} height={24} />
           </div>
-        </StyledHeader>
-        <StyledBody>
-          <StyledWishContent>{content}</StyledWishContent>
-          <StyledWisher>- {from_name}</StyledWisher>
-        </StyledBody>
-        <StyledFooter>
-          <SongpyeonBtn songpyeonType="sp2" count={sp1} id={id} />
-          <SongpyeonBtn songpyeonType="sp3" count={sp2} id={id} />
-          <SongpyeonBtn songpyeonType="sp4" count={sp3} id={id} />
-        </StyledFooter>
-      </StyledWish>
+        </S_Header>
+        <S_Body>
+          <S_WishContent>{content}</S_WishContent>
+          <S_Wisher>- {from_name}</S_Wisher>
+        </S_Body>
+        <S_Footer>
+          <SongpyeonBtn songpyeonType="sp1" count={sp1} id={id} />
+          <SongpyeonBtn songpyeonType="sp2" count={sp2} id={id} />
+          <SongpyeonBtn songpyeonType="sp3" count={sp3} id={id} />
+        </S_Footer>
+      </S_Wish>
     </>
   );
 };
 
 export default Wish;
 
-const StyledWish = styled.div`
+const S_Wish = styled.div`
   width: 32rem;
   border-radius: 3rem 1rem 0 0;
 
@@ -77,7 +79,7 @@ const StyledWish = styled.div`
   }
 `;
 
-const StyledHeader = styled.div`
+const S_Header = styled.div`
   margin-top: 2rem;
   padding: 0 2.3rem;
 
@@ -85,21 +87,21 @@ const StyledHeader = styled.div`
   justify-content: flex-end;
 `;
 
-const StyledBody = styled.div`
+const S_Body = styled.div`
   padding: 0 2.3rem;
   font-size: 2.4rem;
 `;
 
-const StyledWishContent = styled.div`
+const S_WishContent = styled.div`
   text-align: left;
 `;
 
-const StyledWisher = styled.h3`
+const S_Wisher = styled.h3`
   text-align: right;
   font-size: 2rem;
 `;
 
-const StyledFooter = styled.div`
+const S_Footer = styled.div`
   height: 5.1rem;
   padding: 0 0.5rem;
   background-color: ${COLORS.LIGHT_GREY};

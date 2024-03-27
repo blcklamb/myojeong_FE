@@ -15,11 +15,11 @@ const Start = () => {
 
   return (
     <>
-      <StyledTop>
-        <StyledH4>소원을 빌면 송편을 나눠줘요</StyledH4>
-        <StyledH1>묘정 송편</StyledH1>
-      </StyledTop>
-      <StyledMiddle>
+      <S_Top>
+        <S_H4>소원을 빌면 송편을 나눠줘요</S_H4>
+        <S_H1>묘정 송편</S_H1>
+      </S_Top>
+      <S_Middle>
         <div style={{ position: "relative", width: "100%", height: "24rem" }}>
           <img
             style={{
@@ -59,8 +59,8 @@ const Start = () => {
             alt="full-moon"
           />
         </div>
-      </StyledMiddle>
-      <StyledBottom>
+      </S_Middle>
+      <S_Bottom>
         <Span>현재 {wishCount}개의 소원이 모였어요!</Span>
         <Button
           text="묘정 이야기 듣기"
@@ -75,30 +75,30 @@ const Start = () => {
           color="DARK_BROWN"
         ></Button>
         <CreditLink />
-      </StyledBottom>
+      </S_Bottom>
     </>
   );
 };
 
 export default Start;
 
-const StyledTop = styled.div`
+const S_Top = styled.div`
   margin-top: 4rem;
 `;
 
-const StyledH4 = styled.h4`
+const S_H4 = styled.h4`
   color: ${COLORS.WHITE};
   font-size: 2rem;
 `;
 
-const StyledH1 = styled.h1`
+const S_H1 = styled.h1`
   color: ${COLORS.WHITE};
   font-size: 6.4rem;
 `;
 
-const StyledMiddle = styled.div``;
+const S_Middle = styled.div``;
 
-const StyledBottom = styled.div`
+const S_Bottom = styled.div`
   margin-top: 11rem;
 
   display: flex;

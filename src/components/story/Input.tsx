@@ -19,7 +19,7 @@ interface InputProps {
  */
 const Input = ({ height, value, placeholder, onChangeInput }: InputProps) => {
   return (
-    <StyledInput
+    <S_Input
       height={height}
       value={value}
       placeholder={placeholder}
@@ -30,7 +30,7 @@ const Input = ({ height, value, placeholder, onChangeInput }: InputProps) => {
 
 export default Input;
 
-const StyledInput = styled.input<{ height: number }>`
+const S_Input = styled.input<{ height: number }>`
   width: 100%;
   background-color: ${COLORS.WHITE};
 

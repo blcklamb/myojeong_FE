@@ -10,24 +10,21 @@ interface CreditLinkProps {
 const CreditLink = ({ hasGithubIcon }: CreditLinkProps) => {
   const navigate = useNavigate();
   return (
-    <StyledCreditContainer>
+    <S_CreditContainer>
       {hasGithubIcon && <Icon name="github" width={34} height={34} />}
-      <StyledA onClick={() => navigate("/credit")}>ⓒ Team 묘정송편</StyledA>
-    </StyledCreditContainer>
+      <S_A onClick={() => navigate("/credit")}>ⓒ Team 묘정송편</S_A>
+    </S_CreditContainer>
   );
 };
 
 export default CreditLink;
 
-const StyledCreditContainer = styled.div`
+const S_CreditContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
-  gap: 0.4rem;
 `;
-
-const StyledA = styled.a`
+const S_A = styled.a`
   font-size: 2rem;
   color: ${COLORS.GREY};
   margin-top: 0.6rem;

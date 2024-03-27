@@ -7,9 +7,10 @@ import Turn from "components/story/Turn";
 import TypeTo from "components/story/TypeTo";
 import { styled } from "styled-components";
 import { usePOSTWish } from "hooks/api/story";
-import { useTransition, animated } from "react-spring";
+import { animated } from "react-spring";
+import useReactSpring from "hooks/useReactSpring";
 
-type TStep =
+export type TStep =
   | "INTRO"
   | "TURN"
   | "NAME-FROM"
@@ -37,38 +38,35 @@ const Story = () => {
 
   const { mutate } = usePOSTWish();
 
-  const transitions = useTransition(step, {
-    from: { opacity: 0, transform: "translate3d(1000vw, 0, 0)" },
-    enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
-    leave: { opacity: 0, transform: "translate3d(-20vw, 0, 0)" },
-    exitBeforeEnter: true,
-  });
+  const { useFunnelTransition } = useReactSpring;
+  const pageTransition = useFunnelTransition(step);
 
-  const onNextNameFrom = (name: string) => {
+  const onNextNameFrom = (작성자_이름: string) => {
     setStoryData((prev) => {
-      return { ...prev, fromName: name };
+      return { ...prev, fromName: 작성자_이름 };
     });
     setStep("TYPE-TO");
   };
-  const onNextTypeTo = (type: string) => {
-    if (type === "나") {
+  const onNextTypeTo = (송편주인_타입: string) => {
+    if (송편주인_타입 === "나") {
       setStoryData((prev) => {
-        return { ...prev, toName: "", toType: type };
+        return { ...prev, toName: "", toType: 송편주인_타입 };
       });
       setStep("MAKE-WISH");
     } else {
       setStoryData((prev) => {
-        return { ...prev, toType: type };
+        return { ...prev, toType: 송편주인_타입 };
       });
       setStep("NAME-TO");
     }
   };
-  const onNextNameTo = (name: string) => {
+  const onNextNameTo = (송편주인_이름: string) => {
     setStoryData((prev) => {
-      return { ...prev, toName: name };
+      return { ...prev, toName: 송편주인_이름 };
     });
     setStep("MAKE-WISH");
   };
+
   const onNextMakeWish = (content: string, isOpen: boolean) => {
     const { fromName, toName } = storyData;
     mutate({
@@ -80,8 +78,8 @@ const Story = () => {
   };
 
   return (
-    <StyledLayout>
-      {transitions((props, item) => (
+    <S_Layout>
+      {pageTransition((props, item) => (
         <animated.div style={props}>
           {item === "INTRO" && (
             <Intro
@@ -96,43 +94,43 @@ const Story = () => {
             />
           )}
           {item === "NAME-FROM" && (
-            <StyledPadding5>
+            <S_Padding5>
               <NameFrom onNext={onNextNameFrom} />
-            </StyledPadding5>
+            </S_Padding5>
           )}
           {item === "TYPE-TO" && (
-            <StyledPadding5>
+            <S_Padding5>
               <TypeTo onNext={onNextTypeTo} />
-            </StyledPadding5>
+            </S_Padding5>
           )}
           {item === "NAME-TO" && (
-            <StyledPadding5>
+            <S_Padding5>
               <NameTo onNext={onNextNameTo} toType={storyData.toType} />
-            </StyledPadding5>
+            </S_Padding5>
           )}
           {item === "MAKE-WISH" && (
-            <StyledPadding5>
+            <S_Padding5>
               <MakeWish
                 onNext={onNextMakeWish}
                 fromName={storyData.fromName}
                 toName={storyData.toName}
               />
-            </StyledPadding5>
+            </S_Padding5>
           )}
         </animated.div>
       ))}
-    </StyledLayout>
+    </S_Layout>
   );
 };
 
 export default Story;
 
-const StyledLayout = styled.div`
+const S_Layout = styled.div`
   width: 100%;
   height: 84.4rem;
   padding-top: 5rem;
 `;
-const StyledPadding5 = styled.div`
+const S_Padding5 = styled.div`
   padding-top: 5rem;
   /* height: 100% */
 `;

@@ -21,18 +21,18 @@ const NameTo = ({ onNext, toType }: NameToProps) => {
   const onClickNextSPButton = () => {
     if (isValidName(name)) onNext(name);
     // TODO: toast 처리
-    else alert("이름은 0자 이상 6자 이하애오");
+    else alert("이름은 1자 이상 6자 이하애오");
   };
 
   return (
     <>
-      <StyledTop>
+      <S_Top>
         <Paragraph>
           {`${toType}의
             이름이 뭐애오?`}
         </Paragraph>
-      </StyledTop>
-      <StyledMiddle>
+      </S_Top>
+      <S_Middle>
         <Paragraph align="right">{`${toType} 이름은`}</Paragraph>
         <Input
           value={name}
@@ -41,19 +41,19 @@ const NameTo = ({ onNext, toType }: NameToProps) => {
           onChangeInput={onChangeName}
         />
         <Paragraph align="right">{`(이)야`}</Paragraph>
-      </StyledMiddle>
-      <StyledBottom>
+      </S_Middle>
+      <S_Bottom>
         <NextSPButton onClick={onClickNextSPButton} />
-      </StyledBottom>
+      </S_Bottom>
     </>
   );
 };
 
 export default NameTo;
 
-const StyledTop = styled.div``;
+const S_Top = styled.div``;
 
-const StyledMiddle = styled.div`
+const S_Middle = styled.div`
   margin-top: 5.4rem;
   display: flex;
   flex-direction: column;
@@ -61,7 +61,7 @@ const StyledMiddle = styled.div`
   gap: 1rem;
 `;
 
-const StyledBottom = styled.div`
+const S_Bottom = styled.div`
   margin-top: 2.4rem;
   display: flex;
   flex-direction: column;

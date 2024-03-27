@@ -2,7 +2,7 @@ import Paragraph from "./Paragraph";
 import TopButton from "./TopButton";
 import { styled } from "styled-components";
 import TiltMyojeong from "assets/tilt.gif";
-import { StyledBlurredMoon } from "./MakeWish";
+import { S_BlurredMoon } from "./MakeWish";
 
 interface IntroProps {
   onNext: () => void;
@@ -11,51 +11,51 @@ interface IntroProps {
 
 const Intro = ({ onNext, onSkip }: IntroProps) => {
   return (
-    <StyledWrapper>
-      <StyledTop>
+    <S_Wrapper>
+      <S_Top>
         <TopButton text="이야기 넘어가기" onClick={onSkip} />
-      </StyledTop>
-      <StyledHiddenLayout onClick={() => onNext()} />
-      <StyledMiddle>
+      </S_Top>
+      <S_HiddenLayout onClick={() => onNext()} />
+      <S_Middle>
         <img className="floating-img" src={TiltMyojeong} alt="myojeong" />
-      </StyledMiddle>
-      <StyledBottom>
+      </S_Middle>
+      <S_Bottom>
         <Paragraph align="center">
           {`안녕하새오.
           저는 달나라에 사는 
           토끼 요정, 묘정이애오.`}
         </Paragraph>
-      </StyledBottom>
-      <StyledBlurredMoon />
-    </StyledWrapper>
+      </S_Bottom>
+      <S_BlurredMoon />
+    </S_Wrapper>
   );
 };
 
 export default Intro;
 
-const StyledWrapper = styled.div`
+const S_Wrapper = styled.div`
   position: relative;
 `;
 
-const StyledTop = styled.div`
+const S_Top = styled.div`
   display: flex;
   justify-content: end;
 `;
 
-export const StyledHiddenLayout = styled.div`
+export const S_HiddenLayout = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: transparent;
 `;
 
-const StyledMiddle = styled.div`
+const S_Middle = styled.div`
   margin-top: 18rem;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const StyledBottom = styled.div`
+const S_Bottom = styled.div`
   margin-top: 18.9rem;
 `;

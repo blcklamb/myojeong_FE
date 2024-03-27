@@ -18,17 +18,17 @@ interface TopButtonProps {
 const TopButton = ({ text, onClick }: TopButtonProps) => {
   return (
     <>
-      <StyledButton onClick={onClick}>
+      <S_Button onClick={onClick}>
         {text}
         <Icon name="forward" width={24} height={24} />
-      </StyledButton>
+      </S_Button>
     </>
   );
 };
 
 export default TopButton;
 
-const StyledButton = styled.button`
+const S_Button = styled.button`
   background-color: transparent;
 
   color: ${COLORS.BROWN};

@@ -14,14 +14,14 @@ interface ButtonProps {
 
 const Button = ({ text, type, color, onClick, disabled }: ButtonProps) => {
   return (
-    <StyledButton
+    <S_Button
       onClick={onClick}
       buttontype={type}
       buttoncolor={color}
       disabled={disabled}
     >
       {text}
-    </StyledButton>
+    </S_Button>
   );
 };
 
@@ -40,7 +40,7 @@ const ButtonSize = {
   fontSize: { primary: "3.6rem", secondary: "2.8rem" },
 };
 
-const StyledButton = styled.button.withConfig({
+const S_Button = styled.button.withConfig({
   shouldForwardProp: (prop) => !["buttontype"].includes(prop),
 })<{ buttontype: TButton; buttoncolor: TButtonColor }>`
   width: ${(props) => ButtonSize.width[props.buttontype]};

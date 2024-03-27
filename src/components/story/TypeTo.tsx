@@ -21,24 +21,24 @@ const TypeTo = ({ onNext }: TypeToProps) => {
   const onClickNextSPButton = () => {
     if (isValidName(type)) onNext(type);
     // TODO: toast 처리
-    else alert("유형은 0자 이상 6자 이하애오");
+    else alert("유형은 1자 이상 6자 이하애오");
   };
 
   return (
     <>
-      <StyledTop>
+      <S_Top>
         <Paragraph>
           {`누구를 위한
           소원이애오?`}
         </Paragraph>
-      </StyledTop>
-      <StyledMiddle>
-        <StyledBadgeGroup>
-          <Badge badgeType={1} type="나" onClick={() => setType("나")} />
-          <Badge badgeType={2} type="가족" onClick={() => setType("가족")} />
-          <Badge badgeType={3} type="친구" onClick={() => setType("친구")} />
-          <Badge badgeType={4} type="직접 입력" onClick={() => setType("")} />
-        </StyledBadgeGroup>
+      </S_Top>
+      <S_Middle>
+        <S_BadgeGroup>
+          <Badge type="SELF" onClick={() => setType("나")} />
+          <Badge type="FAMILY" onClick={() => setType("가족")} />
+          <Badge type="FRIEND" onClick={() => setType("친구")} />
+          <Badge type="CUSTOM" onClick={() => setType("")} />
+        </S_BadgeGroup>
         <Input
           value={type}
           height={6.4}
@@ -46,19 +46,19 @@ const TypeTo = ({ onNext }: TypeToProps) => {
           onChangeInput={onChangeType}
         />
         <Paragraph align="right">{`(을/를) 위한 소원이야.`}</Paragraph>
-      </StyledMiddle>
-      <StyledBottom>
+      </S_Middle>
+      <S_Bottom>
         <NextSPButton onClick={onClickNextSPButton} />
-      </StyledBottom>
+      </S_Bottom>
     </>
   );
 };
 
 export default TypeTo;
 
-const StyledTop = styled.div``;
+const S_Top = styled.div``;
 
-const StyledMiddle = styled.div`
+const S_Middle = styled.div`
   margin-top: 5.4rem;
   display: flex;
   flex-direction: column;
@@ -66,14 +66,14 @@ const StyledMiddle = styled.div`
   gap: 1rem;
 `;
 
-const StyledBottom = styled.div`
+const S_Bottom = styled.div`
   margin-top: 2.4rem;
   display: flex;
   flex-direction: column;
   align-items: end;
 `;
 
-const StyledBadgeGroup = styled.div`
+const S_BadgeGroup = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;

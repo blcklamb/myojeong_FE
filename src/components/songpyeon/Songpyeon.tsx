@@ -9,7 +9,6 @@ import Icon from "components/Icon";
 import { useEffect, useMemo, useRef } from "react";
 import { toPng } from "html-to-image";
 import CreditLink from "components/start/CreditLink";
-import Span from "components/story/Span";
 
 const Songpyeon = () => {
   const [searchParams] = useSearchParams();
@@ -97,7 +96,7 @@ const Songpyeon = () => {
 
   return (
     <>
-      <StyledTop>
+      <S_Top>
         {isRightAfterPOST && (
           <Paragraph>
             {`주문이 끝났어요.
@@ -110,43 +109,41 @@ const Songpyeon = () => {
               여기 ${songpyeonOwner}의 송편이애오.`}
           </Paragraph>
         )}
-      </StyledTop>
-      <StyledPreview ref={songpyeonPreviewRef}>
-        <StyledSongpyeon>
-          <StyledEmoji>{data?.emoji}</StyledEmoji>
-          <StyledSPImage src={centerSP} alt="center-songpyeon" />
-        </StyledSongpyeon>
-        <StyledMiddle>
-          <StyledP style={{ textAlign: "left" }}>{toName}에게</StyledP>
-          <StyledP>{data?.content}</StyledP>
-          <StyledP style={{ textAlign: "right" }}>
-            {data?.from_name}의 소원
-          </StyledP>
-        </StyledMiddle>
-      </StyledPreview>
-      <StyledBottom>
+      </S_Top>
+      <S_Preview ref={songpyeonPreviewRef}>
+        <S_Songpyeon>
+          <S_Emoji>{data?.emoji}</S_Emoji>
+          <S_SPImage src={centerSP} alt="center-songpyeon" />
+        </S_Songpyeon>
+        <S_Middle>
+          <S_P style={{ textAlign: "left" }}>{toName}에게</S_P>
+          <S_P>{data?.content}</S_P>
+          <S_P style={{ textAlign: "right" }}>{data?.from_name}의 소원</S_P>
+        </S_Middle>
+      </S_Preview>
+      <S_Bottom>
         {hasPassword && isRightAfterPOST && (
-          <StyledSecretMessage>
+          <S_SecretMessage>
             {`비공개 소원은 현재 링크로만 접근 가능해오.`}
             <br />
             {`꼭 소원을 저장하거나 링크를 복사해주새오.`}
-          </StyledSecretMessage>
+          </S_SecretMessage>
         )}
         {isRightAfterPOST && (
-          <StyledBottomUpper>
+          <S_BottomUpper>
             <Button
               color="LIGHT_BROWN"
               type="secondary"
               text="소원 저장하기"
               onClick={onClickSongpyeonToPNG}
             />
-            <StyledCircleButton onClick={openShareBottomSheet}>
+            <S_CircleButton onClick={openShareBottomSheet}>
               <Icon name="instagram" width={54} height={54} />
-            </StyledCircleButton>
-            <StyledCircleButton onClick={copyUrlToClipboard}>
+            </S_CircleButton>
+            <S_CircleButton onClick={copyUrlToClipboard}>
               <Icon name="copy" width={54} height={54} />
-            </StyledCircleButton>
-          </StyledBottomUpper>
+            </S_CircleButton>
+          </S_BottomUpper>
         )}
         {!isRightAfterPOST && (
           <Button
@@ -163,18 +160,18 @@ const Songpyeon = () => {
           onClick={() => navigate("/dalnara")}
         />
         <CreditLink hasGithubIcon />
-      </StyledBottom>
+      </S_Bottom>
     </>
   );
 };
 
 export default Songpyeon;
 
-const StyledTop = styled.div`
+const S_Top = styled.div`
   margin-top: 5rem;
 `;
 
-const StyledSongpyeon = styled.div`
+const S_Songpyeon = styled.div`
   display: flex;
   justify-content: center;
 
@@ -184,24 +181,24 @@ const StyledSongpyeon = styled.div`
   position: relative;
 `;
 
-const StyledSPImage = styled.img`
+const S_SPImage = styled.img`
   position: absolute;
   z-index: 1;
   width: 7rem;
   height: auto;
 `;
 
-const StyledEmoji = styled.span`
+const S_Emoji = styled.span`
   position: absolute;
   z-index: 2;
   font-size: 2.4rem;
 `;
 
-const StyledPreview = styled.div`
+const S_Preview = styled.div`
   padding-bottom: 2.4rem;
 `;
 
-const StyledMiddle = styled.div`
+const S_Middle = styled.div`
   border-radius: 3.9rem;
   border: 0.7rem dashed #ef9e9b;
   background: ${COLORS.WHITE};
@@ -218,12 +215,12 @@ const StyledMiddle = styled.div`
   justify-content: space-between;
 `;
 
-const StyledP = styled.p`
+const S_P = styled.p`
   font-size: 2.8rem;
   line-height: normal;
 `;
 
-const StyledBottom = styled.div`
+const S_Bottom = styled.div`
   /* margin-top: 1rem; */
   display: flex;
   flex-direction: column;
@@ -231,18 +228,18 @@ const StyledBottom = styled.div`
   gap: 1.2rem;
 `;
 
-const StyledBottomUpper = styled.div`
+const S_BottomUpper = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const StyledCircleButton = styled.button`
+const S_CircleButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const StyledSecretMessage = styled.span`
+const S_SecretMessage = styled.span`
   color: ${COLORS.GREY};
   font-size: 1.6rem;
 `;

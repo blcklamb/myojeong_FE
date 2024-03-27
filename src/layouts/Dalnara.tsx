@@ -10,6 +10,12 @@ import { useNavigate } from "react-router-dom";
 import { COLORS } from "styles/color";
 import CreditLink from "components/start/CreditLink";
 
+type TDropDownOption = "recent" | "songpyeon";
+const OPTION_MAP: { [key: string]: TDropDownOption } = {
+  최신: "recent",
+  좋아요: "songpyeon",
+};
+
 const Dalnara = () => {
   const [inputValue, setInputValue] = useState("");
   const [sortType, setSortType] = useState("recent");
@@ -32,31 +38,36 @@ const Dalnara = () => {
     }, 100);
   };
 
-  const onChangeSortType = (option: string) => {
-    setSortType(option === "최신" ? "recent" : "songpyeon");
+  const onChangeSortType = (option: TDropDownOption) => {
+    setSortType(option);
   };
 
   return (
-    <StyledDalnara>
-      <StyledTopWrapper>
-        <StyledTopButtonWrapper>
+    <S_Dalnara>
+      <S_TopWrapper>
+        <S_TopButtonWrapper>
           <CreditLink />
 
           <TopButton
             text="소원주문하러가기"
             onClick={() => navigate("/story")}
           />
-        </StyledTopButtonWrapper>
-        <StyledInputWrapper>
+        </S_TopButtonWrapper>
+        <S_InputWrapper>
           <Input
             value={inputValue}
             height={4.8}
             placeholder="소원작성자 검색"
             onChangeInput={handleInputChange}
           />
-          <Dropdown options={["최신", "좋아요"]} onSelect={onChangeSortType} />
-        </StyledInputWrapper>
-      </StyledTopWrapper>
+          <Dropdown
+            options={["최신", "좋아요"]}
+            onSelect={(option) => {
+              onChangeSortType(OPTION_MAP[option]);
+            }}
+          />
+        </S_InputWrapper>
+      </S_TopWrapper>
 
       {data?.pages.map((wishList) =>
         wishList.data.wish_list.map((wish: wishListItem) => (
@@ -72,13 +83,13 @@ const Dalnara = () => {
         ))
       )}
       <div ref={ref} />
-    </StyledDalnara>
+    </S_Dalnara>
   );
 };
 
 export default Dalnara;
 
-const StyledDalnara = styled.div`
+const S_Dalnara = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -88,7 +99,7 @@ const StyledDalnara = styled.div`
   position: relative;
 `;
 
-const StyledTopWrapper = styled.div`
+const S_TopWrapper = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${COLORS.BLACK};
@@ -97,7 +108,7 @@ const StyledTopWrapper = styled.div`
   z-index: 1;
 `;
 
-const StyledTopButtonWrapper = styled.div`
+const S_TopButtonWrapper = styled.div`
   /* width: 32rem; */
   margin-top: 3rem;
   display: flex;
@@ -105,7 +116,7 @@ const StyledTopButtonWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledInputWrapper = styled.div`
+const S_InputWrapper = styled.div`
   margin: 3rem 0 2.5rem 0;
   width: 33rem;
   display: flex;

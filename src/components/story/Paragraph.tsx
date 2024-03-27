@@ -16,12 +16,12 @@ interface ParagraphProps {
   </Paragraph>
  */
 const Paragraph = ({ children, align = "left" }: ParagraphProps) => {
-  return <StyledP align={align}>{children}</StyledP>;
+  return <S_P align={align}>{children}</S_P>;
 };
 
 export default Paragraph;
 
-const StyledP = styled.p<{ align: TAlign }>`
+const S_P = styled.p<{ align: TAlign }>`
   color: ${COLORS.WHITE};
   white-space: pre-line;
   font-size: 3.6em;

@@ -39,7 +39,10 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
       {isOpen && (
         <S_DropdownList>
           {options.map((option, index) => (
-            <S_DropdownListItem key={index} onClick={() => handleOptionClick(option)}>
+            <S_DropdownListItem
+              key={index}
+              onClick={() => handleOptionClick(option)}
+            >
               {option}
             </S_DropdownListItem>
           ))}

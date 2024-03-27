@@ -119,9 +119,7 @@ const Songpyeon = () => {
         <S_Middle>
           <S_P style={{ textAlign: "left" }}>{toName}에게</S_P>
           <S_P>{data?.content}</S_P>
-          <S_P style={{ textAlign: "right" }}>
-            {data?.from_name}의 소원
-          </S_P>
+          <S_P style={{ textAlign: "right" }}>{data?.from_name}의 소원</S_P>
         </S_Middle>
       </S_Preview>
       <S_Bottom>

@@ -22,11 +22,8 @@ export default CreditLink;
 const S_CreditContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
-  gap: 0.4rem;
 `;
-
 const S_A = styled.a`
   font-size: 2rem;
   color: ${COLORS.GREY};
